@@ -1,13 +1,627 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Babylonica&family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,700&family=Calligraffitti&family=Cinzel&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Fauna+One&family=Henny+Penny&family=Lato:wght@100;300;400&family=League+Spartan:wght@200;300;400;500&family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@100;200;300;400&family=Nunito:wght@200;400&family=Poppins:wght@100;200;300&display=swap');
+
+*,
+::after,
+::before {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+ 
+  --clr-primary-1: #f5f3e7;
+  --clr-primary-2: #343a40;
+  --clr-primary-3: #545454;
+  --clr-primary-4: #dee2e6;
+  --clr-primary-8: #D6A6AD;
+  --clr-primary-hover:#FFEB3B;
+  --clr-primary-10: #F7F4F8 ;
+    --clr-primary-11: #DFEFF2;
+  --clr-body: #12121C;
+  --clr-white: #fff;
+  
+  --clr-black: #222;
+    --primary-font1: 'Lato', sans-serif;
+  --primary-font2: 'Merriweather', serif;
+  --primary-font3: 'Montserrat' sans-serif;
+  --primary-font4: 'Oswald', sans-serif;
+  --primary-font5: 'Playfair Display', serif;
+  --primary-font6: 'Raleway', sans-serif;
+  --primary-font7: 'Rubik Microbe', cursive;
+  --primary-font8: 'Rubik Moonrocks', cursive;
+  --primary-font9: 'Anton', sans-serif;
+  --primary-font10: 'Babylonica', cursive;
+  --primary-font11: 'Bodoni Moda', serif;
+  --primary-font12:  'Calligraffitti', cursive;
+  --primary-font13: 'EB Garamond', serif;
+  --primary-font14:'Henny Penny', cursive;
+  --primary-font15:'League Spartan', sans-serif;
+  --primary-font16:'Libre Baskerville', serif;
+  --primary-font17:'Nunito', sans-serif;
+  --primary-font18:'Poppins', sans-serif;
+  --primary-font19: 'Cinzel', serif;
+  --primary-font20: 'Fauna One', serif;
+  --transition: all 0.3s linear;
+  --spacing: 0.1rem;
+  --radius: 0.25rem;
+  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  --max-width: 1170px;
+  --fixed-width: 620px;
+  
+}
+
+
+
+body {
+  background: var(--clr-white);
+  color: var(--clr-black);
+  transition: var(--darkModeTransition);
+  font-family: var(--primary-font1);
+  line-height: 1.5;
+  font-size: 0.875rem;
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: var(--spacing);
+  text-transform: capitalize;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.25rem;
+}
+h4 {
+  font-size: 0.875rem;
+}
+p {
+  margin-bottom: 1.25rem;
+}
+@media screen and (min-width: 800px) {
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 1.75rem;
+  }
+  h4 {
+    font-size: 1rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+}
+/*  global classes */
+
+/* section */
+.section-center {
+  width: 90vw;
+  margin: 1rem auto;
+  max-width: var(--max-width);
+
+}
+.nav-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: var(--max-width);
+
+}
+
+.title h3{
+  text-transform:uppercase;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--clr-white);
+}
+.underline{
+  width: 10rem;
+  height: 1rem;
+  background: var(--clr-primary-8);
+  margin: 0 auto;
+}
+/* Navbar */
+.nav-center {
+  position: relative;
+}
+
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-icons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.nav-links {
+  display: none; 
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links.show {
+  display: flex; 
+  flex-direction: column; 
+  position: absolute; 
+  background-color: white; 
+  top: 60px; 
+  left: 0;
+  width: 100%; 
+  z-index: 100;
+}
+.menu-icons button{
+background-color: transparent;
+border-color: transparent;
+font-size: 1.5rem;
+}
+@media (min-width: 992px) {
+  .nav-links {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .menu-icons {
+    display: none;
+  }
+
+  .logo {
+    order: 1;
+  }
+
+  .nav-links {
+    order: 2;
+  }
+
+  .nav-icons {
+    order: 3;
+  }
+
+  .nav-link {
+    position: relative; 
+  }
+
+  .nav-link a {
+    text-decoration: none; 
+    color: #333; 
+    padding: 0.5rem 1rem; 
+    display: block; 
+    transition: color 0.3s, background-color 0.3s; 
+    margin: 0; 
+  }
+.nav-header{
+ align-items: baseline;
+}
+  /* Prevent movement on hover */
+  .nav-link a:hover {
+    background-color: rgba(100, 100, 255, 0.1); /* Add background on hover without changing padding/margins */
+    color: #111; /* Change color on hover */
+  }
+}
+
+.nav-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.dropdown {
+  list-style: none;
+  padding-left: 20px;
+  background-color: var(--clr-white);
+  box-shadow: var(--dark-shadow);
+}
+
+.dropdown-item a {
+  text-decoration: none;
+  color: var(--clr-black);
+}
+
+.dropdown-item a:hover {
+  text-decoration: underline;
+}
+/* Hero */
+.hero-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+}
+
+.circle-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px; /* Adjust size as needed */
+  height: 300px; /* Adjust size as needed */
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5); /* Optional: Add a color */
+  transform: translate(-50%, -50%);
+  z-index: 1; /* Behind the image */
+}
+
+.hero-image {
+  position: relative;
+  width: 100%; /* Adjust size as needed */
+}
+
+h1, p {
+  z-index: 2; /* Above the circle */
+  color: var(--clr-black);
+}
+
+@media (min-width: 992px) {
+  .hero-details {
+    position: absolute;
+    right: 30%;
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
+  }
+}
+/* HeroTwo */
+.hero-two {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+
+
+.hero-image-background {
+  background-color: #f0f0f0; /* Background color behind image */
+  border-radius: 50%; /* Rounded background behind image */
+  padding: 2rem; /* Adjust the padding to make the background larger than the image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image-background img {
+  width: 100%;
+  border-radius: 50%; /* Optional: if you want a circular image */
+  object-fit: cover;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.btn {
+  background-color: #ff6347;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background-color: #ff4500;
+}
+@media (min-width:992px) {
+  .hero-text {
+  flex: 1;
+  max-width: 50%;
+}
+
+.hero-image-container {
+  flex: 1;
+  max-width: 50%;
+  position: relative;
+}
+}
+/* Products */
+.carousel {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-items {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Smooth sliding */
+}
+
+.carousel-items-products {
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.carousel-items-products img {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 50px; /* Negative effect, can adjust to your liking */
+  border-top-right-radius: 0; /* Keep right corner square */
+  transition: border-radius 0.3s ease; /* Smooth transition for border radius */
+}
+
+.carousel-items-products:hover img {
+  border-top-left-radius: 0; /* Make top-left corner square on hover */
+  border-top-right-radius: 0; /* Ensure right corner stays square */
+}
+
+.carousel h3 {
+  margin-top: 10px;
+  font-size: 1.5rem;
+}
+
+.carousel p {
+  font-size: 1rem;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Responsive styling for carousel items */
+@media screen and (min-width: 992px) {
+  .carousel-item {
+    min-width: 25%; /* 4 items on large screens */
+  }
+  .carousel{
+    margin-top: -15rem;
+  }
+}
+@media screen and (max-width: 991px) {
+  .carousel-item {
+    min-width: 100%; /* 1 item on mobile screens */
+  }
+}
+/* Uniques */
+.unique-container{
+  background-color: var(--clr-primary-11);
+  padding: 5rem;
+}
+.unique-container img{
+  width: 100%;
+}
+.prev,.next{
+  display: none;
+}
+@media (min-width:992px) {
+  .prev,.next{
+  display:block;
+}
+  .unique-container{
+ 
+  display: flex;
+  justify-content: center;
+ 
+}
+.unique-products{
+  display: flex;
+  justify-content: space-between;
+  gap: 5rem;
+}
+.unique-products{
+  width: 100%;
+}
+.image-container {
+  position: relative;
+  width: 100%;
+}
+
+.image-container img {
+  width: 100%;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1; /* Ensure buttons are above the image */
+}
+
+.prev {
+  left: 10px; /* Position left */
+}
+
+.next {
+  right: 10px; /* Position right */
+}
+
+.prev:disabled,
+.next:disabled {
+  opacity: 0.5; /* Change appearance when disabled */
+  pointer-events: none; /* Prevent clicking */
+}
+}
+/* Client */
+.client-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.client-carousel-container {
+  display: flex;
+  align-items: center;
+}
+
+.client-carousel-items {
+  display: flex;
+  justify-content: center;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  height: 300px;
+  gap: 5rem;  
+}
+
+.client-carousel-item {
+  text-align: center; /* Center the images */
+  padding: 10px; /* Add some padding */
+}
+
+.client-carousel-item img {
+  width: 20%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.client-carousel-controls {
+  text-align: center;
+  margin-top: 1rem; /* Space above the controls */
+}
+
+.client-prev, .client-next {
+  background:var(--clr-primary-8);
+  border: none;
+  font-size: 2rem; /* Size of the arrow */
+  cursor: pointer;
+}
+
+.client-prev:disabled, .client-next:disabled {
+  opacity: 0.5; /* Style for disabled buttons */
+  cursor: not-allowed; /* Change cursor for disabled state */
+}
+
+.client-testimonial {
+  text-align: center;
+  margin-top: 1rem;
+  font-style: italic; /* Make testimonial text italic */
+}
+
+.client-btn{
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+}
+
+/* Shop */
+.bg-shop{
+  background-color: #BEE1E6;
+  padding: 1rem;
+ 
+}
+.bg-shop a{
+   color: var(--clr-black);
+text-decoration: none;
+font-size: 1.5rem;
+}
+.grid-one,.inStock-bg{
+  background-color:#BEE1E6 ;
+  border-color: transparent;
+  padding: 0.5rem;
+
+}
+.grid-two,.outStock-bg{
+  background-color:#D6A6AD ;
+  border-color: transparent;
+  padding: 0.5rem;
+  
+}
+.product-item img{
+  width: 100%;
+}
+@media (min-width:992px) {
+  .product-list {
+  display: grid;
+  gap: 20px; /* Space between items */
+}
+
+.grid-2-row {
+  grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+}
+
+.grid-3-row {
+  grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+}
+
+.product-item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+.container-shop-one{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 }
