@@ -238,7 +238,7 @@ font-size: 1.5rem;
 }
 
 .dropdown {
-  list-style: none;
+  display: none; /* Initially hidden */
   padding-left: 20px;
   background-color: var(--clr-white);
   box-shadow: var(--dark-shadow);
@@ -249,8 +249,9 @@ font-size: 1.5rem;
   color: var(--clr-black);
 }
 
-.dropdown-item a:hover {
-  text-decoration: underline;
+.nav-link:hover .dropdown,
+.nav-link .dropdown {
+  display: block; /* Show when the active category matches */
 }
 /* Hero */
 .hero-container {

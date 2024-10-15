@@ -1,89 +1,102 @@
 import { nanoid } from 'nanoid'
 
-const navLinks = [
+const navbarData = [
   {
     id: nanoid(),
-    name: 'Home',
+    title: 'Things to Do',
     categories: [
-      { id: nanoid(), name: 'Electronics', link: '/home/electronics' },
-      { id: nanoid(), name: 'Furniture', link: '/home/furniture' },
-      { id: nanoid(), name: 'Appliances', link: '/home/appliances' },
-      { id: nanoid(), name: 'Outdoor', link: '/home/outdoor' },
-      { id: nanoid(), name: 'Decor', link: '/home/decor' },
-      { id: nanoid(), name: 'Office', link: '/home/office' },
-      { id: nanoid(), name: 'Lighting', link: '/home/lighting' },
-    ],
-  },
-
-  {
-    id: nanoid(),
-    name: 'Women',
-    categories: [
-      { id: nanoid(), name: 'Clothing', link: '/women/clothing' },
-      { id: nanoid(), name: 'Accessories', link: '/women/accessories' },
-      { id: nanoid(), name: 'Shoes', link: '/women/shoes' },
-      { id: nanoid(), name: 'Beauty', link: '/women/beauty' },
-      { id: nanoid(), name: 'Sport', link: '/women/sport' },
-      { id: nanoid(), name: 'Sale', link: '/women/sale' },
-      { id: nanoid(), name: 'Special Offers', link: '/women/special-offers' },
-      { id: nanoid(), name: 'Gifting', link: '/women/gifting' },
-    ],
-  },
-  {
-    id: nanoid(),
-    name: 'Men',
-    categories: [
-      { id: nanoid(), name: 'Clothing', link: '/men/clothing' },
-      { id: nanoid(), name: 'Accessories', link: '/men/accessories' },
-      { id: nanoid(), name: 'Shoes', link: '/men/shoes' },
-      { id: nanoid(), name: 'Beauty', link: '/men/beauty' },
-      { id: nanoid(), name: 'Sport', link: '/men/sport' },
-      { id: nanoid(), name: 'Offers & Deals', link: '/men/offers-deals' },
-      { id: nanoid(), name: 'Sale', link: '/men/sale' },
-      { id: nanoid(), name: 'Gifting', link: '/men/gifting' },
-    ],
-  },
-  {
-    id: nanoid(),
-    name: 'Kids',
-    categories: [
-      { id: nanoid(), name: 'Clothing', link: '/kids/clothing' },
-      { id: nanoid(), name: 'Accessories', link: '/kids/accessories' },
-      { id: nanoid(), name: 'Shoes', link: '/kids/shoes' },
-      { id: nanoid(), name: 'Beauty', link: '/kids/beauty' },
-      { id: nanoid(), name: 'Sport', link: '/kids/sport' },
-      { id: nanoid(), name: 'Offers & Deals', link: '/kids/offers-deals' },
-      { id: nanoid(), name: 'Sale', link: '/kids/sale' },
-      { id: nanoid(), name: 'Gifting', link: '/kids/gifting' },
-    ],
-  },
-  {
-    id: nanoid(),
-    name: 'Beauty',
-    categories: [
-      { id: nanoid(), name: 'View All', link: '/beauty/view-all' },
-      { id: nanoid(), name: 'Makeup', link: '/beauty/makeup' },
-      { id: nanoid(), name: 'Nails', link: '/beauty/nails' },
-      { id: nanoid(), name: 'Skin Care', link: '/beauty/skin-care' },
-      { id: nanoid(), name: 'Hair Care', link: '/beauty/hair-care' },
-      { id: nanoid(), name: 'Fragrance & Perfume', link: '/beauty/fragrance' },
       {
         id: nanoid(),
-        name: 'Makeup Bags & Cases',
-        link: '/beauty/makeup-bags',
+        name: 'Cultural Experiences',
+        link: '/things-to-do/cultural-experiences',
       },
-      { id: nanoid(), name: 'Mini Size', link: '/beauty/mini-size' },
-      { id: nanoid(), name: 'Sale', link: '/beauty/sale' },
-      { id: nanoid(), name: 'Guides', link: '/beauty/guides' },
-      { id: nanoid(), name: 'Gifting', link: '/beauty/gifting' },
+      {
+        id: nanoid(),
+        name: 'Outdoor Activities',
+        link: '/things-to-do/outdoor-activities',
+      },
+      {
+        id: nanoid(),
+        name: 'Historical Sites',
+        link: '/things-to-do/historical-sites',
+      },
+      {
+        id: nanoid(),
+        name: 'Wildlife Tours',
+        link: '/things-to-do/wildlife-tours',
+      },
     ],
   },
   {
     id: nanoid(),
-    name: 'Shop',
-    categories: [], // No categories for Shop
-    link: '/shop', // If necessary, you can include this for navigation
+    title: 'Explore',
+    categories: [
+      { id: nanoid(), name: 'Cities', link: '/explore/cities' },
+      { id: nanoid(), name: 'National Parks', link: '/explore/national-parks' },
+      { id: nanoid(), name: 'Beaches', link: '/explore/beaches' },
+      { id: nanoid(), name: 'Rural Areas', link: '/explore/rural-areas' },
+    ],
+  },
+  {
+    id: nanoid(),
+    title: 'Dine',
+    categories: [
+      { id: nanoid(), name: 'Local Cuisine', link: '/dine/local-cuisine' },
+      { id: nanoid(), name: 'Fine Dining', link: '/dine/fine-dining' },
+      { id: nanoid(), name: 'Street Food', link: '/dine/street-food' },
+      {
+        id: nanoid(),
+        name: 'Cafes and Bakeries',
+        link: '/dine/cafes-and-bakeries',
+      },
+    ],
+  },
+  {
+    id: nanoid(),
+    title: 'Stay',
+    categories: [
+      { id: nanoid(), name: 'Hotels', link: '/stay/hotels' },
+      { id: nanoid(), name: 'Guesthouses', link: '/stay/guesthouses' },
+      { id: nanoid(), name: 'Hostels', link: '/stay/hostels' },
+      { id: nanoid(), name: 'Camping', link: '/stay/camping' },
+    ],
+  },
+  {
+    id: nanoid(),
+    title: 'Events',
+    categories: [
+      { id: nanoid(), name: 'Festivals', link: '/events/festivals' },
+      { id: nanoid(), name: 'Concerts', link: '/events/concerts' },
+      { id: nanoid(), name: 'Exhibitions', link: '/events/exhibitions' },
+      { id: nanoid(), name: 'Workshops', link: '/events/workshops' },
+    ],
+  },
+  {
+    id: nanoid(),
+    title: 'About Us',
+    categories: [
+      { id: nanoid(), name: 'Our Story', link: '/about/our-story' },
+      { id: nanoid(), name: 'Meet the Team', link: '/about/meet-the-team' },
+      { id: nanoid(), name: 'Careers', link: '/about/careers' },
+    ],
+  },
+  {
+    id: nanoid(),
+    title: 'Contact',
+    categories: [
+      {
+        id: nanoid(),
+        name: 'Customer Support',
+        link: '/contact/customer-support',
+      },
+      { id: nanoid(), name: 'Feedback', link: '/contact/feedback' },
+      {
+        id: nanoid(),
+        name: 'Media Inquiries',
+        link: '/contact/media-inquiries',
+      },
+    ],
   },
 ]
 
-export default navLinks
+export default navbarData
