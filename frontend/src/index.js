@@ -6,14 +6,17 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import{createBrowserRouter,createRoutesFromElements,Route,RouterProvider} from "react-router-dom"
 import Home from './components/Home';
-import HomeProducts from './screen/HomeProducts';
+import HomeProducts from './screen/ShopScreen';
 import { Provider } from 'react-redux'
 import { store } from './store'
+import ProductScreen from './screen/ProductScreen';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index={true} path='/' element={<Home />} />
-      <Route  path='/shop' element={<HomeProducts />} />
+      <Route path='/page/:pageNumber' element={<Home />} />
+      <Route path='/product/:id' element={<ProductScreen />} />
+      <Route path='/shop' element={<HomeProducts />} />
     </Route>
   )
 )

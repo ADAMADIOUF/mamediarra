@@ -6,6 +6,7 @@ import Uniques from './Uniques'
 import UniqueTwo from './UniqueTwo'
 import HeroThree from './HeroThree'
 import Client from './Client'
+import HomeProduct from './HomeProduct'
 
 
 const Home = () => {
@@ -13,11 +14,11 @@ const Home = () => {
     <div>
       <Hero/>
       <HeroTwo/>
-      <Product/>
+      <HomeProduct/>
       <Uniques/>
       <UniqueTwo/>
       <HeroThree/>
-      <Product/>
+    <HomeProduct/>
       <Client/>
     </div>
   )
