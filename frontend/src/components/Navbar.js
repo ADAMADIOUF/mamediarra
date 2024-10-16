@@ -20,11 +20,11 @@ const NavigationMenu = () => {
       <div className='nav-header'>
         <div className='logo'>
           <Link to={`/`}>
-            <h3>Visit Senegal Now</h3>
+            <h3>Bousso Bally</h3>
           </Link>
         </div>
         <div className='menu-icons'>
-          <button onClick={toggleNav}>
+          <button onClick={toggleNav} aria-label='Toggle Menu'>
             {isNavbar ? <FaTimes /> : <FaBars />}
           </button>
         </div>
@@ -39,6 +39,7 @@ const NavigationMenu = () => {
               <button
                 onClick={() => handleCategoryClick(navItem.id)}
                 className='nav-button'
+                aria-expanded={activeCategory === navItem.id}
               >
                 {navItem.title}
               </button>

@@ -3,72 +3,81 @@ import { nanoid } from 'nanoid'
 const navbarData = [
   {
     id: nanoid(),
-    title: 'Things to Do',
+    title: 'Clothing',
     categories: [
       {
         id: nanoid(),
-        name: 'Cultural Experiences',
-        link: '/things-to-do/cultural-experiences',
+        name: 'Men’s Clothing',
+        link: '/clothing/mens',
       },
       {
         id: nanoid(),
-        name: 'Outdoor Activities',
-        link: '/things-to-do/outdoor-activities',
+        name: 'Women’s Clothing',
+        link: '/clothing/womens',
       },
       {
         id: nanoid(),
-        name: 'Historical Sites',
-        link: '/things-to-do/historical-sites',
+        name: 'Kids’ Clothing',
+        link: '/clothing/kids',
       },
       {
         id: nanoid(),
-        name: 'Wildlife Tours',
-        link: '/things-to-do/wildlife-tours',
-      },
-    ],
-  },
-  {
-    id: nanoid(),
-    title: 'Explore',
-    categories: [
-      { id: nanoid(), name: 'Cities', link: '/explore/cities' },
-      { id: nanoid(), name: 'National Parks', link: '/explore/national-parks' },
-      { id: nanoid(), name: 'Beaches', link: '/explore/beaches' },
-      { id: nanoid(), name: 'Rural Areas', link: '/explore/rural-areas' },
-    ],
-  },
-  {
-    id: nanoid(),
-    title: 'Dine',
-    categories: [
-      { id: nanoid(), name: 'Local Cuisine', link: '/dine/local-cuisine' },
-      { id: nanoid(), name: 'Fine Dining', link: '/dine/fine-dining' },
-      { id: nanoid(), name: 'Street Food', link: '/dine/street-food' },
-      {
-        id: nanoid(),
-        name: 'Cafes and Bakeries',
-        link: '/dine/cafes-and-bakeries',
+        name: 'Unisex Clothing',
+        link: '/clothing/unisex',
       },
     ],
   },
   {
     id: nanoid(),
-    title: 'Stay',
+    title: 'Shoes',
     categories: [
-      { id: nanoid(), name: 'Hotels', link: '/stay/hotels' },
-      { id: nanoid(), name: 'Guesthouses', link: '/stay/guesthouses' },
-      { id: nanoid(), name: 'Hostels', link: '/stay/hostels' },
-      { id: nanoid(), name: 'Camping', link: '/stay/camping' },
+      { id: nanoid(), name: 'Men’s Shoes', link: '/shoes/mens' },
+      { id: nanoid(), name: 'Women’s Shoes', link: '/shoes/womens' },
+      { id: nanoid(), name: 'Kids’ Shoes', link: '/shoes/kids' },
+      { id: nanoid(), name: 'Custom Shoes', link: '/shoes/custom' },
     ],
   },
   {
     id: nanoid(),
-    title: 'Events',
+    title: 'Accessories',
     categories: [
-      { id: nanoid(), name: 'Festivals', link: '/events/festivals' },
-      { id: nanoid(), name: 'Concerts', link: '/events/concerts' },
-      { id: nanoid(), name: 'Exhibitions', link: '/events/exhibitions' },
-      { id: nanoid(), name: 'Workshops', link: '/events/workshops' },
+      { id: nanoid(), name: 'Bags', link: '/accessories/bags' },
+      { id: nanoid(), name: 'Jewelry', link: '/accessories/jewelry' },
+      { id: nanoid(), name: 'Hats', link: '/accessories/hats' },
+      { id: nanoid(), name: 'Belts', link: '/accessories/belts' },
+    ],
+  },
+  {
+    id: nanoid(),
+    title: 'Custom African',
+    categories: [
+      {
+        id: nanoid(),
+        name: 'Tailored Clothing',
+        link: '/custom-african/clothing',
+      },
+      { id: nanoid(), name: 'Custom Designs', link: '/custom-african/designs' },
+      {
+        id: nanoid(),
+        name: 'Handcrafted Items',
+        link: '/custom-african/handcrafted',
+      },
+      {
+        id: nanoid(),
+        name: 'Made-to-Order',
+        link: '/custom-african/made-to-order',
+      },
+    ],
+  },
+  {
+    id: nanoid(),
+    title: 'Shop',
+    categories: [
+      { id: nanoid(), name: 'Shop', link: '/shop' },
+      { id: nanoid(), name: 'New Arrivals', link: '/shop/new-arrivals' },
+      { id: nanoid(), name: 'Best Sellers', link: '/shop/best-sellers' },
+      { id: nanoid(), name: 'Sale', link: '/shop/sale' },
+      { id: nanoid(), name: 'Gift Cards', link: '/shop/gift-cards' },
     ],
   },
   {

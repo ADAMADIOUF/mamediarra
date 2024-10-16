@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
-import a from '../her2.png'
+import a from '../assets/unique1.png'
 import products from '../data'
 
 const Uniques = () => {
   return (
     <div className='unique-container'>
       <div className='unique-big-img'>
-        <img src={a} alt='' />
+        <img
+          src={a}
+          alt=''
+        />
       </div>
       <div className='unique-products'>
         {products.slice(0, 3).map((product) => (
@@ -42,7 +45,7 @@ const UniqueProduct = ({ product }) => {
         >
           &#10094;
         </button>
-        <img src={product.images[currentImageIndex]} alt={product.name} />
+        <img src={product.images[currentImageIndex]} alt={product.name} className='unique-product-img' />
         <button
           className='next'
           onClick={nextImage}

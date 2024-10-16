@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import a from '../assets/ladie.png'
+import a from '../assets/hero1.png' // Ensure the path is correct
 
 const Hero = () => {
-  const [bgColor, setBgColor] = useState('#8BC6E2') // Initial color
+  const [bgColor, setBgColor] = useState('#8BC6E2') // Initial background color
 
   useEffect(() => {
     const colors = [
@@ -19,23 +19,25 @@ const Hero = () => {
       setBgColor(randomColor)
     }
 
-    const intervalId = setInterval(changeColor, 1000) // Change color every second
+    const intervalId = setInterval(changeColor, 3000) // Change color every 3 seconds
 
     return () => clearInterval(intervalId) // Cleanup on component unmount
   }, [])
 
   return (
     <div className='hero-container' style={{ backgroundColor: bgColor }}>
-      <div className='circle-background'></div> {/* Add this line */}
-      <img
-        src={a} // Replace with your image URL
-        alt='Hero'
-        className='hero-image'
-      />
-      <div className='hero-details'>
-        <h1>Bienvenue à notre boutique</h1>
-        <p>Découvrez les meilleurs produits ici.</p>
-        <button className='btn'>Achetez maintenant</button>
+      <div className='circle-background'></div>
+      <div className='hero-content'>
+        <img
+          src={a}
+          alt='Hero'
+          className='hero-image'
+        />
+        <div className='hero-details'>
+          <h1>Bienvenue à notre boutique</h1>
+          <p>Découvrez les meilleurs produits ici.</p>
+          <button className='btn'>Achetez maintenant</button>
+        </div>
       </div>
     </div>
   )

@@ -93,7 +93,7 @@ const columnStyle = {
 
 const formStyle = {
   display: 'flex',
-  flexDirection: 'row',
+  flexDirection: 'column',
 
 }
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import a from '../her2.png'
+import a from '../assets/unique2.png'
 import products from '../data'
 
 const UniqueTwo = () => {
@@ -42,7 +42,11 @@ const UniqueProduct = ({ product }) => {
         >
           &#10094;
         </button>
-        <img src={product.images[currentImageIndex]} alt={product.name} />
+        <img
+          src={product.images[currentImageIndex]}
+          alt={product.name}
+          className='unique-product-img'
+        />
         <button
           className='next'
           onClick={nextImage}
