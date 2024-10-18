@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import navLinks from '../dataNav' // Ensure this path is correct
+import navLinks from '../dataNav' 
 import { FaUser, FaSearch, FaBars, FaTimes } from 'react-icons/fa'
 
 const NavigationMenu = () => {

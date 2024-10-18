@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import a from '../assets/hero4.png' // Ensure the path is correct
-import b from '../assets/hero3.png' // Add your second image
-import c from '../assets/hero1.png' // Add your third image
-import d from '../assets/hero4.png' // Add your fourth image
+import { FaTruck, FaShieldAlt, FaUndo } from 'react-icons/fa' // Importing icons
+import a from '../assets/heroone.png'
+import b from '../assets/herotwo.png'
+import c from '../assets/herothree.png'
+import d from '../assets/herofour.png'
 
 const Hero = () => {
   const [bgColor, setBgColor] = useState('#8BC6E2') // Initial background color
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-  const images = [a, b, c, d] // Array of images
+  const images = [a, b, c, d]
   const texts = [
-    'Bienvenue à notre boutique - Image 1',
-    'Découvrez nos nouveautés - Image 2',
-    'Profitez des meilleures offres - Image 3',
-    'Achetez vos produits préférés - Image 4',
-  ] // Array of texts corresponding to each image
+    'Welcome to our store',
+    'Discover our new arrivals',
+    'Enjoy the best offers',
+    'Shop your favorite products',
+  ]
 
   useEffect(() => {
     const colors = [
@@ -35,12 +36,12 @@ const Hero = () => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length)
     }
 
-    const colorIntervalId = setInterval(changeColor, 3000) // Change color every 3 seconds
-    const imageIntervalId = setInterval(changeImage, 3000) // Change image every 3 seconds
+    const colorIntervalId = setInterval(changeColor, 3000)
+    const imageIntervalId = setInterval(changeImage, 3000)
 
     return () => {
       clearInterval(colorIntervalId)
-      clearInterval(imageIntervalId) // Cleanup on component unmount
+      clearInterval(imageIntervalId)
     }
   }, [])
 
@@ -49,15 +50,30 @@ const Hero = () => {
       <div className='circle-background'></div>
       <div className='hero-content'>
         <img
-          src={images[currentImageIndex]} // Display the current image
+          src={images[currentImageIndex]}
           alt='Hero'
           className='hero-image'
         />
         <div className='hero-details'>
-          <h1>{texts[currentImageIndex]}</h1>{' '}
-          {/* Display text for the current image */}
-          <p>Découvrez les meilleurs produits ici.</p>
-          <button className='btn'>Achetez maintenant</button>
+          <h1>{texts[currentImageIndex]}</h1>
+          <p>Discover the best products here.</p>
+          <button className='btn'>Shop Now</button>
+        </div>
+      </div>
+
+      {/* Adding the icons with text */}
+      <div className='hero-icons'>
+        <div className='icon-box'>
+          <FaTruck className='icon' />
+          <p>Free Delivery</p>
+        </div>
+        <div className='icon-box'>
+          <FaShieldAlt className='icon' />
+          <p>Security Guarantee</p>
+        </div>
+        <div className='icon-box'>
+          <FaUndo className='icon' />
+          <p>Free Return</p>
         </div>
       </div>
     </div>

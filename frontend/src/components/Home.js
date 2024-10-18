@@ -1,12 +1,12 @@
 import React from 'react'
 import Hero from './Hero'
-import HeroTwo from './HerTwo'
-import Product from './Product'
+import HeroTwo from './HeroTwo'
 import Uniques from './Uniques'
 import UniqueTwo from './UniqueTwo'
 import HeroThree from './HeroThree'
 import Client from './Client'
 import HomeProduct from './HomeProduct'
+import LastProducts from './LastProducts'
 
 
 const Home = () => {
@@ -20,6 +20,7 @@ const Home = () => {
       <HeroThree/>
     <HomeProduct/>
       <Client/>
+  <LastProducts/>
     </div>
   )
 }

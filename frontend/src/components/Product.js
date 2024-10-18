@@ -5,19 +5,19 @@ import Rating from './Rating'
 const Product = ({ product }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-  // Ensure that product exists before rendering
+ 
   if (!product || !product.images || product.images.length === 0) {
     return <div>No product data available</div>
   }
 
-  // Function to go to the next image
+ 
   const nextImage = () => {
     if (currentImageIndex < product.images.length - 1) {
       setCurrentImageIndex(currentImageIndex + 1)
     }
   }
 
-  // Function to go to the previous image
+ 
   const prevImage = () => {
     if (currentImageIndex > 0) {
       setCurrentImageIndex(currentImageIndex - 1)
@@ -27,7 +27,7 @@ const Product = ({ product }) => {
   return (
     <div className='unique-details'>
       <div className='image-container'>
-        {/* Disable the previous button if the current index is 0 or if there's only 1 image */}
+        
         <button
           className='prev'
           onClick={prevImage}
@@ -44,7 +44,7 @@ const Product = ({ product }) => {
           />
         </Link>
 
-        {/* Disable the next button if at the last image or if there's only 1 image */}
+        
         <button
           className='next'
           onClick={nextImage}
@@ -59,7 +59,7 @@ const Product = ({ product }) => {
 
       <div className='product-info'>
         <Link to={`/product/${product._id}`}>
-          <h2 className='product-title'>{product.name}</h2>
+          <h2 className='product-title'>{product.name.substring(0,20)}</h2>
         </Link>
         <div className='product-rating'>
           <Rating

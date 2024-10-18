@@ -7,6 +7,7 @@ import Message from './Message'
 import { useGetProductsQuery } from '../slices/productApiSlice'
 
 const HomeProduct = () => {
+  
   useEffect(() => {
     window.scroll({
       top: 0,
@@ -14,22 +15,34 @@ const HomeProduct = () => {
     })
   }, [])
 
-  const { pageNumber, keyword } = useParams()
+  
+  const { pageNumber = 1, keyword = '' } = useParams()
+
+  
   const {
     data,
     isLoading: loading,
     error,
   } = useGetProductsQuery({ pageNumber, keyword })
-console.log(data);
 
+
+  
+
+  
   if (loading) {
     return <Loading />
   }
 
+ 
   if (error) {
-    return <Message variant='danger'>{error}</Message>
+    return (
+      <Message variant='danger'>
+        {error?.data?.message || 'Error occurred'}
+      </Message>
+    )
   }
 
+ 
   if (!data || !data.products || data.products.length === 0) {
     return (
       <>
@@ -43,9 +56,7 @@ console.log(data);
 
   return (
     <div className='home-product'>
-      {!keyword ? (
-        <h1>Best Sellers</h1>
-      ) : (
+      {!keyword ? null : (
         <Link to='/' className='back-btn'>
           Go Back
         </Link>
@@ -59,6 +70,7 @@ console.log(data);
         ))}
       </div>
 
+     
       <Paginate
         pages={data.pages}
         page={data.page}
