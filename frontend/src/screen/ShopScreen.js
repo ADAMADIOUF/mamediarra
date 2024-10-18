@@ -1,58 +1,39 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import {
-  setPriceRange,
-  setCategory,
-  setRating,
-  setSortOption,
-  clearFilters,
-} from '../features/productSlice'
+import { useGetProductsQuery } from '../slices/productApiSlice' 
 import { Link } from 'react-router-dom'
-import { FaTh, FaThList } from 'react-icons/fa' 
-
+import { FaTh, FaThList } from 'react-icons/fa'
 
 const HomeProducts = () => {
-  const dispatch = useDispatch()
-  const filteredProducts = useSelector(
-    (state) => state.products.filteredProducts
-  )
-  const filters = useSelector((state) => state.products.filters)
-  const [sortOption, setSortOptionState] = useState('')
-  const [isGrid2Row, setIsGrid2Row] = useState(true) 
-  
-  const inStockCount = filteredProducts.filter(
+  const [keyword] = useState('')
+  const [sortOption, setSortOption] = useState('')
+  const [category, setCategory] = useState('')
+  const [inStock, setInStock] = useState('')
+  const [minPrice, setMinPrice] = useState(0)
+  const [maxPrice, setMaxPrice] = useState(100) // Set a default max price
+  const [isGrid2Row, setIsGrid2Row] = useState(true)
+  const pageNumber = 1 // Set your page number as needed
+
+  const {
+    data: productsData,
+    error,
+    isLoading,
+  } = useGetProductsQuery({
+    keyword,
+    pageNumber,
+    category,
+    sortBy: sortOption,
+    minPrice,
+    maxPrice,
+    inStock,
+  })
+
+  const products = productsData?.products || []
+  const inStockCount = products.filter(
     (product) => product.countInStock > 0
   ).length
-  const outOfStockCount = filteredProducts.filter(
+  const outOfStockCount = products.filter(
     (product) => product.countInStock === 0
   ).length
-
-  
-  const maxPrice =
-    Math.max(...filteredProducts.map((product) => product.price)) || 0
-
-  const sortedFilteredProducts = () => {
-    let sortedProducts = [...filteredProducts]
-
-    if (sortOption === 'priceLowToHigh') {
-      sortedProducts.sort((a, b) => a.price - b.price)
-    } else if (sortOption === 'priceHighToLow') {
-      sortedProducts.sort((a, b) => b.price - a.price)
-    } else if (sortOption === 'aToZ') {
-      sortedProducts.sort((a, b) => a.name.localeCompare(b.name))
-    } else if (sortOption === 'zToA') {
-      sortedProducts.sort((a, b) => b.name.localeCompare(a.name))
-    }
-
-    const { min, max } = filters.priceRange
-    sortedProducts = sortedProducts.filter(
-      (product) => product.price >= min && product.price <= max
-    )
-
-    return sortedProducts
-  }
-
-  const productsToDisplay = sortedFilteredProducts()
 
   return (
     <div className='shop'>
@@ -89,17 +70,11 @@ const HomeProducts = () => {
           <article>
             <label>
               Sort by:
-              <select
-                onChange={(e) => {
-                  setSortOptionState(e.target.value)
-                  dispatch(setSortOption(e.target.value))
-                }}
-              >
+              <select onChange={(e) => setSortOption(e.target.value)}>
                 <option value=''>Default</option>
-                <option value='priceLowToHigh'>Price: Low to High</option>
-                <option value='priceHighToLow'>Price: High to Low</option>
-                <option value='aToZ'>A to Z</option>
-                <option value='zToA'>Z to A</option>
+                <option value='priceAsc'>Price: Low to High</option>
+                <option value='priceDesc'>Price: High to Low</option>
+                <option value='rating'>Top Rated</option>
               </select>
             </label>
           </article>
@@ -108,47 +83,31 @@ const HomeProducts = () => {
       <div className='container-shop'>
         <article>
           <h4>Filter by Price</h4>
-          <p>The maximum price is ${maxPrice.toFixed(2)}</p>
           <label>
             From $
             <input
               type='number'
-              value={filters.priceRange.min}
-              onChange={(e) =>
-                dispatch(
-                  setPriceRange({
-                    ...filters.priceRange,
-                    min: parseFloat(e.target.value) || 0,
-                  })
-                )
-              }
+              value={minPrice}
+              onChange={(e) => setMinPrice(e.target.value)}
             />
           </label>
           <label>
             To $
             <input
               type='number'
-              value={filters.priceRange.max}
-              onChange={(e) =>
-                dispatch(
-                  setPriceRange({
-                    ...filters.priceRange,
-                    max: parseFloat(e.target.value) || maxPrice,
-                  })
-                )
-              }
+              value={maxPrice}
+              onChange={(e) => setMaxPrice(e.target.value)}
             />
           </label>
-          <button onClick={() => dispatch(clearFilters())}>Clear All</button>
         </article>
         <article>
           <h4>Filter by Category</h4>
           <label>
             Category:
-            <select onChange={(e) => dispatch(setCategory(e.target.value))}>
+            <select onChange={(e) => setCategory(e.target.value)}>
               <option value=''>All Categories</option>
-              <option value='Kids'>Kids</option>
-              <option value='Women'>Women</option>
+              <option value='Bag'>Bag</option>
+              <option value='Clothing'>Clothing</option>
               <option value='Men'>Men</option>
               <option value='Beauty'>Beauty</option>
               <option value='Home'>Home</option>
@@ -159,10 +118,8 @@ const HomeProducts = () => {
           <h4>Filter by Rating</h4>
           <label>
             Minimum Rating:
-            <select
-              onChange={(e) => dispatch(setRating(parseFloat(e.target.value)))}
-            >
-              <option value='0'>All Ratings</option>
+            <select onChange={(e) => setInStock(e.target.value)}>
+              <option value=''>All Ratings</option>
               <option value='1'>1 Star & Up</option>
               <option value='2'>2 Stars & Up</option>
               <option value='3'>3 Stars & Up</option>
@@ -178,9 +135,11 @@ const HomeProducts = () => {
               isGrid2Row ? 'grid-2-row' : 'grid-3-row'
             }`}
           >
-            {productsToDisplay.map((product) => (
-              <div key={product.id} className='product-item'>
-                <img src={product.images[0]} alt='' />
+            {isLoading && <p>Loading products...</p>}
+            {error && <p>Error loading products: {error.message}</p>}
+            {products.map((product) => (
+              <div key={product._id} className='product-item'>
+                <img src={product.images[0]} alt={product.name} />
                 <h5>{product.name}</h5>
                 <p>Price: ${product.price.toFixed(2)}</p>
                 <p>Rating: {product.rating} Stars</p>

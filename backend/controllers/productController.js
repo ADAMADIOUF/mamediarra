@@ -1,20 +1,48 @@
 import asyncHandler from '../middleware/asyncHandler.js'
 import Product from '../models/Product.js'
-
 const getPorducts = asyncHandler(async (req, res) => {
   const pageSize = 4
   const page = Number(req.query.pageNumber) || 1
-  //search
+
+  // Search
   const keyword = req.query.keyword
     ? { name: { $regex: req.query.keyword, $options: 'i' } }
     : {}
-  const count = await Product.countDocuments({ ...keyword })
-  const products = await Product.find({ ...keyword })
-    //pagination
+
+  // Filters
+  const filters = {
+    ...keyword,
+    ...(req.query.category ? { category: req.query.category } : {}),
+    ...(req.query.rating ? { rating: { $gte: req.query.rating } } : {}),
+    ...(req.query.inStock === 'true' ? { countInStock: { $gt: 0 } } : {}),
+    ...(req.query.inStock === 'false' ? { countInStock: { $eq: 0 } } : {}),
+    ...(req.query.minPrice ? { price: { $gte: req.query.minPrice } } : {}),
+    ...(req.query.maxPrice ? { price: { $lte: req.query.maxPrice } } : {}),
+  }
+
+  const count = await Product.countDocuments(filters)
+
+  // Set sorting options based on query
+  let sortOptions = {}
+  if (req.query.sortBy) {
+    sortOptions =
+      req.query.sortBy === 'priceAsc'
+        ? { price: 1 }
+        : req.query.sortBy === 'priceDesc'
+        ? { price: -1 }
+        : { rating: -1 } // Default sort by rating if no valid sortBy is provided
+  }
+
+  // Fetch products with pagination and sorting
+  const products = await Product.find(filters)
+    .sort(sortOptions) // Apply sorting here
     .limit(pageSize)
     .skip(pageSize * (page - 1))
+
   res.json({ products, page, pages: Math.ceil(count / pageSize) })
 })
+
+
 const getPorductsShoes = asyncHandler(async (req, res) => {
   const products = await Product.find({ category: 'Shoes' })
 

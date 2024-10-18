@@ -145,7 +145,17 @@ p {
 }
 /* Navbar */
 .nav-center {
-  position: relative;
+  position: sticky; /* Change to sticky */
+  top: 0; /* Stick to the top of the viewport */
+  z-index: 1000; /* Ensure it's above other content */
+  background-color: white; /* Ensure background is solid */
+  transition: box-shadow 0.3s; /* Smooth transition for shadow effect */
+}
+
+/* Optional: Add a shadow effect on scroll */
+.nav-center.scrolled {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow effect when scrolled */
+  
 }
 
 .nav-header {
@@ -222,7 +232,7 @@ p {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   position: absolute;
   left: 0;
-  top: 100%;
+  top: 10%;
   width: 200px;
   z-index: 10;
 }
@@ -262,7 +272,7 @@ p {
     display: none;
     position: absolute;
     left: 0;
-    top: 100%;
+    top: 10%;
     width: 200px;
     z-index: 100;
   }

@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import navLinks from '../dataNav' 
+import navLinks from '../dataNav'
 import { FaUser, FaSearch, FaBars, FaTimes } from 'react-icons/fa'
 
 const NavigationMenu = () => {
   const [activeCategory, setActiveCategory] = useState(null)
   const [isNavbar, setIsNavbar] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false) // New state for scrolling
 
   const toggleNav = () => {
     setIsNavbar((prev) => !prev)
@@ -15,8 +16,21 @@ const NavigationMenu = () => {
     setActiveCategory(activeCategory === id ? null : id)
   }
 
+  // Scroll effect
+  const handleScroll = () => {
+    const scrollTop = window.scrollY
+    setIsScrolled(scrollTop > 0) // Set to true if scrolled down
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
   return (
-    <nav className='nav-center'>
+    <nav className={`nav-center ${isScrolled ? 'scrolled' : ''}`}>
       <div className='nav-header'>
         <div className='logo'>
           <Link to={`/`}>

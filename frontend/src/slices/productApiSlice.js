@@ -4,16 +4,32 @@ import { apiSlice } from './apiSlice'
 export const productApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getProducts: builder.query({
-      query: ({ keyword, pageNumber }) => ({
+      query: ({
+        keyword,
+        pageNumber,
+        category,
+        sortBy,
+        minPrice,
+        maxPrice,
+        inStock,
+        rating,
+      }) => ({
         url: PRODUCTS_URL,
         params: {
           keyword,
           pageNumber,
+          category,
+          sortBy,
+          minPrice,
+          maxPrice,
+          inStock,
+          rating,
         },
       }),
       providesTags: ['Product'],
       keepUnusedDataFor: 5,
     }),
+
     getProductsShoes: builder.query({
       query: () => ({
         url: `${PRODUCTS_URL}/shoes`,
