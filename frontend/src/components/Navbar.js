@@ -1,12 +1,24 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import navLinks from '../dataNav'
-import { FaUser, FaSearch, FaBars, FaTimes } from 'react-icons/fa'
+import {
+  FaUser,
+  FaSearch,
+  FaBars,
+  FaTimes,
+  FaShoppingCart,
+} from 'react-icons/fa'
+import { useDispatch, useSelector } from 'react-redux'
+import CartButton from './CartButton'
 
-const NavigationMenu = () => {
+const NavigationMenu = ({ toggleCart }) => {
+  // Accept openCart as a prop
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { cartItems } = useSelector((state) => state.cart)
   const [activeCategory, setActiveCategory] = useState(null)
   const [isNavbar, setIsNavbar] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false) // New state for scrolling
+  const [isScrolled, setIsScrolled] = useState(false)
 
   const toggleNav = () => {
     setIsNavbar((prev) => !prev)
@@ -16,10 +28,9 @@ const NavigationMenu = () => {
     setActiveCategory(activeCategory === id ? null : id)
   }
 
-  // Scroll effect
   const handleScroll = () => {
     const scrollTop = window.scrollY
-    setIsScrolled(scrollTop > 0) // Set to true if scrolled down
+    setIsScrolled(scrollTop > 0)
   }
 
   useEffect(() => {
@@ -69,6 +80,8 @@ const NavigationMenu = () => {
             </li>
           ))}
         </ul>
+
+        <CartButton cartItems={cartItems} toggleCart={toggleCart} />
       </div>
     </nav>
   )

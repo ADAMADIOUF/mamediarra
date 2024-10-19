@@ -1,4 +1,4 @@
-// RecoomendProductScreen.js
+
 import React, { useEffect, useState } from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
@@ -40,10 +40,10 @@ const RecoomendProductScreen = () => {
   )
 
   const handleProductSelect = (product) => {
-    setSelectedProduct(product) // Set the selected product
+    setSelectedProduct(product) 
   }
 
-  // If a product is selected, show its details
+  
   if (selectedProduct) {
     return (
       <>
@@ -55,9 +55,9 @@ const RecoomendProductScreen = () => {
     )
   }
 
-  // Default view: Show recommended products
+  
   return (
-    <>
+    <div className='section-center'>
       <h2>Trendy Clothing Selection</h2>
       <p>
         Discover our versatile collection of clothing, designed to keep you
@@ -100,7 +100,7 @@ const RecoomendProductScreen = () => {
           </Col>
         ))}
       </Row>
-    </>
+    </div>
   )
 }
 

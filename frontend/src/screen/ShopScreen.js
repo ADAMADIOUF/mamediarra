@@ -10,6 +10,8 @@ const HomeProducts = () => {
   const [inStock, setInStock] = useState('')
   const [minPrice, setMinPrice] = useState(0)
   const [maxPrice, setMaxPrice] = useState(100) // Set a default max price
+  const [rating, setRating] = useState('')
+
   const [isGrid2Row, setIsGrid2Row] = useState(true)
   const pageNumber = 1 // Set your page number as needed
 
@@ -24,7 +26,7 @@ const HomeProducts = () => {
     sortBy: sortOption,
     minPrice,
     maxPrice,
-    inStock,
+    inStock,rating
   })
 
   const products = productsData?.products || []
@@ -115,19 +117,20 @@ const HomeProducts = () => {
           </label>
         </article>
         <article>
-          <h4>Filter by Rating</h4>
-          <label>
-            Minimum Rating:
-            <select onChange={(e) => setInStock(e.target.value)}>
-              <option value=''>All Ratings</option>
-              <option value='1'>1 Star & Up</option>
-              <option value='2'>2 Stars & Up</option>
-              <option value='3'>3 Stars & Up</option>
-              <option value='4'>4 Stars & Up</option>
-              <option value='5'>5 Stars</option>
-            </select>
-          </label>
-        </article>
+  <h4>Filter by Rating</h4>
+  <label>
+    Minimum Rating:
+    <select onChange={(e) => setRating(e.target.value)}>
+      <option value=''>All Ratings</option>
+      <option value='1'>1 Star & Up</option>
+      <option value='2'>2 Stars & Up</option>
+      <option value='3'>3 Stars & Up</option>
+      <option value='4'>4 Stars & Up</option>
+      <option value='5'>5 Stars</option>
+    </select>
+  </label>
+</article>
+
         <article>
           <h4>Products</h4>
           <div
@@ -139,7 +142,9 @@ const HomeProducts = () => {
             {error && <p>Error loading products: {error.message}</p>}
             {products.map((product) => (
               <div key={product._id} className='product-item'>
+               <Link to={`/product/${product._id}`}>
                 <img src={product.images[0]} alt={product.name} />
+               </Link>
                 <h5>{product.name}</h5>
                 <p>Price: ${product.price.toFixed(2)}</p>
                 <p>Rating: {product.rating} Stars</p>

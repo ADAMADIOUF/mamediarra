@@ -5,6 +5,11 @@ import { useGetproductDetailQuery } from '../slices/productApiSlice'
 import Message from '../components/Message'
 import Loader from '../components/Loading'
 import RecoomendProductScreen from './RecommendProductScreen'
+import { addToCart } from '../slices/cartSlice'
+import { useDispatch } from 'react-redux'
+import Modal from '../components/Modal'
+import CartScreen from './CartScreen'
+
 
 const ProductScreen = () => {
   useEffect(() => {
@@ -17,7 +22,8 @@ const ProductScreen = () => {
   const [mainImage, setMainImage] = useState('')
   const { id: productId } = useParams()
   const navigate = useNavigate()
-
+ const dispatch = useDispatch()
+ const [qty, setQty] = useState(1)
   const {
     data: product,
     isLoading: loading,
@@ -25,11 +31,17 @@ const ProductScreen = () => {
   } = useGetproductDetailQuery(productId)
 
   const [activeTab, setActiveTab] = useState('description')
-
+const [isModalOpen, setIsModalOpen] = useState(false)
   const handleThumbnailImageClick = (image) => {
     setMainImage(image)
   }
-
+const addToCartHandler = () => {
+  dispatch(addToCart({ ...product, qty }))
+  setIsModalOpen(true)
+}
+const closeModal = () => {
+  setIsModalOpen(false) // Close the modal
+}
   if (loading) {
     return <Loader />
   }
@@ -191,10 +203,13 @@ const ProductScreen = () => {
       </Link>
       <div className='product-screen-bg'>
         <span>
-          <Link to={`/shp`}>All</Link>
+          <Link to={`/shop`}>All</Link>
         </span>
         <span>{product.name.substring(0, 20)}</span>
       </div>
+       <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <CartScreen/>
+       </Modal>
       <div className='product-screen'>
         <div className='product-screen-container'>
           <article>
@@ -238,6 +253,36 @@ const ProductScreen = () => {
                 <strong>Status:</strong>{' '}
                 {product.countInStock > 0 ? 'In stock' : 'Out of stock'}
               </div>
+              <div className='cart-details'>
+                {product.countInStock > 0 && (
+                  <div className='quantity-container'>
+                    <label htmlFor='quantity'>Qty:</label>
+                    <select
+                      id='quantity'
+                      value={qty}
+                      onChange={(e) => setQty(Number(e.target.value))}
+                    >
+                      {[...Array(product.countInStock).keys()].map((x) => (
+                        <option key={x + 1} value={x + 1}>
+                          {x + 1}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                )}
+                <div className='add-to-cart-container'>
+                  <button
+                    type='button'
+                    disabled={product.countInStock === 0}
+                    onClick={addToCartHandler}
+                    className={`add-to-cart-btn ${
+                      product.countInStock === 0 ? 'disabled' : ''
+                    }`}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
             </div>
             <div className='product-screen-tab'>
               <button onClick={() => setActiveTab('description')}>
@@ -250,8 +295,8 @@ const ProductScreen = () => {
             <div className='tab-content'>{renderTabContent()}</div>
           </article>
         </div>
-        <div className="recommended-products">
-          <RecoomendProductScreen/>
+        <div className='recommended-products'>
+          <RecoomendProductScreen />
         </div>
       </div>
     </>
