@@ -8,7 +8,9 @@ import RecoomendProductScreen from './RecommendProductScreen'
 import { addToCart } from '../slices/cartSlice'
 import { useDispatch } from 'react-redux'
 import Modal from '../components/Modal'
-import CartScreen from './CartScreen'
+
+import ModalCartScreen from './ModalCartScreen'
+import { FaMinus, FaPlus } from 'react-icons/fa'
 
 
 const ProductScreen = () => {
@@ -31,17 +33,28 @@ const ProductScreen = () => {
   } = useGetproductDetailQuery(productId)
 
   const [activeTab, setActiveTab] = useState('description')
-const [isModalOpen, setIsModalOpen] = useState(false)
+ const [isModalOpen, setModalOpen] = useState(false)
+const openModal = () => setModalOpen(true)
+const closeModal = () => setModalOpen(false)
   const handleThumbnailImageClick = (image) => {
     setMainImage(image)
   }
+  const incrementQuantity = () => {
+    if (qty < product.countInStock) {
+      setQty(qty + 1)
+    }
+  }
+
+  const decrementQuantity = () => {
+    if (qty > 1) {
+      setQty(qty - 1)
+    }
+  }
 const addToCartHandler = () => {
   dispatch(addToCart({ ...product, qty }))
-  setIsModalOpen(true)
+  openModal() 
 }
-const closeModal = () => {
-  setIsModalOpen(false) // Close the modal
-}
+
   if (loading) {
     return <Loader />
   }
@@ -207,9 +220,10 @@ const closeModal = () => {
         </span>
         <span>{product.name.substring(0, 20)}</span>
       </div>
-       <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <CartScreen/>
-       </Modal>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <ModalCartScreen />
+      </Modal>
+
       <div className='product-screen'>
         <div className='product-screen-container'>
           <article>
@@ -255,19 +269,38 @@ const closeModal = () => {
               </div>
               <div className='cart-details'>
                 {product.countInStock > 0 && (
-                  <div className='quantity-container'>
-                    <label htmlFor='quantity'>Qty:</label>
-                    <select
-                      id='quantity'
-                      value={qty}
-                      onChange={(e) => setQty(Number(e.target.value))}
+                  <div className='quantity-controls'>
+                    <h3>Quantity</h3>
+                    <button
+                      className='quantity-button'
+                      onClick={decrementQuantity}
                     >
-                      {[...Array(product.countInStock).keys()].map((x) => (
-                        <option key={x + 1} value={x + 1}>
-                          {x + 1}
-                        </option>
-                      ))}
-                    </select>
+                      <FaMinus />
+                    </button>
+                    <input
+                      type='number'
+                      value={qty}
+                      onChange={(e) =>
+                        setQty(
+                          Math.max(
+                            1,
+                            Math.min(
+                              product.countInStock,
+                              Number(e.target.value)
+                            )
+                          )
+                        )
+                      }
+                      min='1'
+                      max={product.countInStock}
+                      className='quantity-input'
+                    />
+                    <button
+                      className='quantity-button'
+                      onClick={incrementQuantity}
+                    >
+                      <FaPlus />
+                    </button>
                   </div>
                 )}
                 <div className='add-to-cart-container'>
@@ -281,6 +314,8 @@ const closeModal = () => {
                   >
                     Add to Cart
                   </button>
+                  <button className="add-to-cart-btn">view whishlist</button>
+
                 </div>
               </div>
             </div>

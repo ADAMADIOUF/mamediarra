@@ -2,31 +2,30 @@ import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import CartScreen from './screen/CartScreen'
-import Modal from './components/Modal' // Ensure Modal is imported
+import Modal from './components/Modal'
+
+import ModalCartScreen from './screen/ModalCartScreen'
 
 const App = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false) // Renamed for clarity
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const toggleCart = () => {
-    setIsModalOpen((prevState) => !prevState) // Toggle modal open/close
-  }
-
-  const closeModal = () => {
-    setIsModalOpen(false) // Function to close the modal
-  }
+  const toggleCart = () => setIsModalOpen(!isModalOpen)
 
   return (
-    <div>
+    <>
       <Navbar toggleCart={toggleCart} />
       {isModalOpen && (
-        <Modal isOpen={isModalOpen} onClose={closeModal}>
-          <CartScreen />
+        <Modal
+          isOpen={isModalOpen}
+          onClose={toggleCart} // This will close the modal when clicking outside or on the close button
+        >
+          <ModalCartScreen closeModal={toggleCart} />{' '}
+          {/* Pass toggleCart to close the modal */}
         </Modal>
       )}
       <Outlet />
       <Footer />
-    </div>
+    </>
   )
 }
 

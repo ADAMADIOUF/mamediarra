@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaTrash } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import { addToCart, removeFromCart } from '../slices/cartSlice'
 
-const CartScreen = () => {
-  const [isModalOpen, setIsModalOpen] = useState(true) // Manage modal state
+const ModalCartScreen = ({ closeModal }) => {
   useEffect(() => {
     window.scroll({
       top: 0,
@@ -22,21 +21,18 @@ const CartScreen = () => {
     dispatch(addToCart({ ...product, qty }))
   }
 
-  const closeModal = () => {
-    setIsModalOpen(false) // Close modal function
-  }
-
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id))
   }
 
   const checkoutHandler = () => {
     navigate('/login?redirect=/shipping')
+    closeModal() // Close the modal after proceeding to checkout
   }
 
   return (
     <div className='cart-screen'>
-      <h1 className='cart-title'>Shopping Cart</h1>  
+      <h1 className='cart-title'>Shopping Cart</h1>
 
       {cartItems.length === 0 ? (
         <Message>
@@ -86,16 +82,31 @@ const CartScreen = () => {
             .reduce((acc, item) => acc + item.qty * item.price, 0)
             .toFixed(2)}
         </div>
-        <button
-          className='checkout-button'
-          disabled={cartItems.length === 0}
-          onClick={checkoutHandler}
-        >
-          Proceed To Checkout
-        </button>
+        <p>Shipping, taxes, and discounts will be calculated at checkout.</p>
+        <div className='buttons-carts'>
+          <div>
+            <button
+              className='checkout-button'
+              disabled={cartItems.length === 0}
+              onClick={checkoutHandler} // Close modal after proceeding to checkout
+            >
+              Proceed To Checkout
+            </button>
+          </div>
+          <div>
+            <Link to={'/cart'}>
+              <button
+                className='checkout-button'
+                onClick={closeModal} // Close the modal when clicking "View Cart"
+              >
+                View Cart
+              </button>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   )
 }
 
-export default CartScreen
+export default ModalCartScreen

@@ -53,10 +53,6 @@ const NavigationMenu = ({ toggleCart }) => {
             {isNavbar ? <FaTimes /> : <FaBars />}
           </button>
         </div>
-        <div className='nav-icons'>
-          <FaSearch />
-          <FaUser />
-        </div>
 
         <ul className={`nav-links ${isNavbar ? 'show' : ''}`}>
           {navLinks.map((navItem) => (
@@ -80,7 +76,10 @@ const NavigationMenu = ({ toggleCart }) => {
             </li>
           ))}
         </ul>
-
+        <div className='nav-icons'>
+          <FaSearch />
+          <FaUser />
+        </div>
         <CartButton cartItems={cartItems} toggleCart={toggleCart} />
       </div>
     </nav>
