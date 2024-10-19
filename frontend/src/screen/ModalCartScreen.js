@@ -42,26 +42,33 @@ const ModalCartScreen = ({ closeModal }) => {
         <div className='cart-items'>
           {cartItems.map((item) => (
             <div className='cart-item' key={item._id}>
-              <img
-                className='cart-item-image'
-                src={item.images[0]}
-                alt={item.name}
-              />
-              <Link className='cart-item-name' to={`/product/${item._id}`}>
-                {item.name}
-              </Link>
-              <div className='cart-item-price'>{item.price} CFA</div>
-              <select
-                className='cart-item-qty'
-                value={item.qty}
-                onChange={(e) => addToCartHandler(item, Number(e.target.value))}
-              >
-                {[...Array(item.countInStock).keys()].map((x) => (
-                  <option key={x + 1} value={x + 1}>
-                    {x + 1}
-                  </option>
-                ))}
-              </select>
+              <article>
+                {' '}
+                <img
+                  className='cart-item-image'
+                  src={item.images[0]}
+                  alt={item.name}
+                />
+              </article>
+              <article>
+                <Link className='cart-item-name' to={`/product/${item._id}`}>
+                  {item.name.substring(0, 20)}
+                </Link>
+                <div className='cart-item-price'>{item.price} CFA</div>
+                <select
+                  className='cart-item-qty'
+                  value={item.qty}
+                  onChange={(e) =>
+                    addToCartHandler(item, Number(e.target.value))
+                  }
+                >
+                  {[...Array(item.countInStock).keys()].map((x) => (
+                    <option key={x + 1} value={x + 1}>
+                      {x + 1}
+                    </option>
+                  ))}
+                </select>
+              </article>
               <button
                 className='cart-item-remove'
                 onClick={() => removeFromCartHandler(item._id)}
@@ -95,10 +102,7 @@ const ModalCartScreen = ({ closeModal }) => {
           </div>
           <div>
             <Link to={'/cart'}>
-              <button
-                className='checkout-button'
-                onClick={closeModal} // Close the modal when clicking "View Cart"
-              >
+              <button className='checkout-button' onClick={closeModal}>
                 View Cart
               </button>
             </Link>

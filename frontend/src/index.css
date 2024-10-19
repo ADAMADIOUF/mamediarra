@@ -1287,23 +1287,19 @@ th {
   background-color: #ccc; /* Light gray when disabled */
   cursor: not-allowed; /* Change cursor when disabled */
 }
-
 /* Modal */
-
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  background: rgba(0, 0, 0, 0.7); 
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Ensure it's on top of other content */
+  z-index: 1000; 
 }
-
-/* Modal content - the box that contains the modal's content */
 .modal-content {
   background: #fff;
   padding: 20px;
@@ -1314,8 +1310,6 @@ th {
   width: 100%;
   z-index: 1001;
 }
-
-/* Modal close button */
 .modal-close {
   position: absolute;
   top: 35px;
@@ -1327,24 +1321,22 @@ th {
   color: #333;
   z-index: 10;
 }
-
-
 .modal-close:focus {
   outline: none;
 }
-
 .modal-close:hover {
   color: red;
 }
 
 /* CartScreen */
 .cart-screen {
-  position:relative;
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
   padding: 20px; 
   background-color: #f9f9f9; 
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Allow vertical scrolling */
 }
 
 .cart-title {
@@ -1353,7 +1345,7 @@ th {
   text-align: center; 
 }
 
-.cart-items {
+.cart-items-container {
   display: flex; 
   flex-direction: column; 
   gap: 10px; 
@@ -1361,8 +1353,8 @@ th {
 
 .cart-item {
   display: flex; 
+  margin: 1rem;
   align-items: center; 
-  padding: 10px; 
   background-color: #fff; 
   border: 1px solid #ddd; 
   border-radius: 8px; 
@@ -1388,8 +1380,9 @@ th {
   margin-right: 20px; 
 }
 
-.cart-item-qty {
-  margin-right: 20px; 
+.quantity-controls {
+  display: flex; 
+  align-items: center; 
 }
 
 .cart-item-remove {
@@ -1435,8 +1428,102 @@ th {
   background-color: #218838; 
 }
 
-.buttons-carts{
+.buttons-carts {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cart-title {
+    font-size: 1.5rem; /* Adjust font size for mobile */
+  }
+
+  .cart-item {
+    flex-direction: column; /* Stack item details vertically */
+    align-items: flex-start; /* Align items to the start */
+  }
+
+  .cart-item-name {
+    margin-bottom: 10px; /* Space between name and price */
+  }
+
+  .quantity-controls {
+    margin-top: 10px; /* Space above quantity controls */
+  }
+}
+
+.shopping-cart-item{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+ 
+}
+.shopping-cart-item-image{
+  width: 200px;
+}
+/* LoginScreen */
+.login-screen {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.submit-button:hover:not(:disabled) {
+  background-color: #218838;
+}
+
+.links {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.register-link {
+  margin-top: 10px;
+}
+
+.return-to-store {
+  margin-top: 20px;
+  text-align: center;
 }

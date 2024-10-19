@@ -10,12 +10,28 @@ import {
 } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import CartButton from './CartButton'
+import { clearCartItems } from '../slices/cartSlice'
+import { logout } from '../slices/authSlice'
+import { useLogoutMutation } from '../slices/userApiSlice'
 
 const NavigationMenu = ({ toggleCart }) => {
-  // Accept openCart as a prop
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { cartItems } = useSelector((state) => state.cart)
+  const { userInfo } = useSelector((state) => state.auth)
+  const [logoutApiCall] = useLogoutMutation()
+
+  const logoutHandler = async () => {
+    try {
+      await logoutApiCall().unwrap()
+      dispatch(logout())
+      dispatch(clearCartItems())
+      navigate(`/login`)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+ 
   const [activeCategory, setActiveCategory] = useState(null)
   const [isNavbar, setIsNavbar] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -78,7 +94,21 @@ const NavigationMenu = ({ toggleCart }) => {
         </ul>
         <div className='nav-icons'>
           <FaSearch />
-          <FaUser />
+          {userInfo ? (
+            <>
+              {userInfo.name}
+              <Link to='/profile' className='nav-button'>
+                <FaUser /> Profile
+              </Link>
+              <button onClick={logoutHandler} className='nav-button'>
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link to='/login' className='nav-button'>
+              <FaUser /> Sign In
+            </Link>
+          )}
         </div>
         <CartButton cartItems={cartItems} toggleCart={toggleCart} />
       </div>

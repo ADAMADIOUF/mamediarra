@@ -5,7 +5,8 @@ import Footer from './components/Footer'
 import Modal from './components/Modal'
 
 import ModalCartScreen from './screen/ModalCartScreen'
-
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -24,6 +25,7 @@ const App = () => {
         </Modal>
       )}
       <Outlet />
+      <ToastContainer />
       <Footer />
     </>
   )
