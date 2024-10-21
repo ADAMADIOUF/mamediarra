@@ -48,7 +48,11 @@ const NavigationMenu = ({ toggleCart }) => {
     const scrollTop = window.scrollY
     setIsScrolled(scrollTop > 0)
   }
+const [dropdownOpen, setDropdownOpen] = useState(false)
 
+const toggleDropdown = () => {
+  setDropdownOpen(!dropdownOpen)
+}
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
     return () => {
@@ -92,22 +96,45 @@ const NavigationMenu = ({ toggleCart }) => {
             </li>
           ))}
         </ul>
-        <div className='nav-icons'>
-          <FaSearch />
+        <div className='nav-icon'>
           {userInfo ? (
-            <>
-              {userInfo.name}
-              <Link to='/profile' className='nav-button'>
-                <FaUser /> Profile
-              </Link>
-              <button onClick={logoutHandler} className='nav-button'>
-                Logout
+            <div className='register-dropdown'>
+              {/* Button to toggle dropdown */}
+              <button onClick={toggleDropdown} className='nav-user'>
+                {userInfo.name}
               </button>
-            </>
+
+              {dropdownOpen && (
+                <div className='dropdown-user'>
+                  <Link to='/profile' className='dropdown-item'>
+                    <FaUser /> Profile
+                  </Link>
+                  <button onClick={logoutHandler} className='dropdown-item'>
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
           ) : (
             <Link to='/login' className='nav-button'>
               <FaUser /> Sign In
             </Link>
+          )}
+          {userInfo && userInfo.isAdmin && (
+            <div className='admin-dropdown'>
+              <button className='admin-dropdown-toggle'>Admin</button>
+              <div className='admin-dropdown-menu'>
+                <Link to='/admin/productlist' className='admin-dropdown-item'>
+                  Products
+                </Link>
+                <Link to='/admin/orderlist' className='admin-dropdown-item'>
+                  Orders
+                </Link>
+                <Link to='/admin/userlist' className='admin-dropdown-item'>
+                  Users
+                </Link>
+              </div>
+            </div>
           )}
         </div>
         <CartButton cartItems={cartItems} toggleCart={toggleCart} />

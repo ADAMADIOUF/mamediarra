@@ -12,15 +12,42 @@ import { store } from './store'
 import ProductScreen from './screen/ProductScreen';
 import CartScreen from './screen/CartScreen';
 import LoginScreen from './screen/LoginScreen';
+import RegisterScreen from './screen/RegisterScreen';
+import ProfileScreen from './screen/ProfileScreen';
+import PrivateRoute from './components/PrivateRoute';
+import ShippingScreen from './screen/ShippingScreen';
+import PaymentScreen from './screen/PaymentScreen';
+import PlaceOrderScreen from './screen/PlaceOrderScreen';
+import OrderScreen from './screen/OrderScreen';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js'
+import AdminRoute from './components/AdminRoute';
+import ProductListScreen from './screen/ProductListScreen';
+import ProductEditScreen from './screen/ProductEditScreen';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index={true} path='/' element={<Home />} />
       <Route path='/page/:pageNumber' element={<Home />} />
       <Route path='/product/:id' element={<ProductScreen />} />
+      <Route path='/shop' element={<HomeProducts />} />
       <Route path='/cart' element={<CartScreen />} />
       <Route path='/login' element={<LoginScreen />} />
-      <Route path='/shop' element={<HomeProducts />} />
+      <Route path='/register' element={<RegisterScreen />} />
+      <Route path='' element={<PrivateRoute />}>
+        <Route path='/profile' element={<ProfileScreen />} />
+        <Route path='/shipping' element={<ShippingScreen />} />
+        <Route path='/payment' element={<PaymentScreen />} />
+        <Route path='/placeorder' element={<PlaceOrderScreen />} />
+        <Route path='/order/:id' element={<OrderScreen />} />
+      </Route>
+      <Route path='' element={<AdminRoute />}>
+        <Route path='/admin/productlist' element={<ProductListScreen />} />
+        <Route
+          path='/admin/productlist/:pageNumber'
+          element={<ProductListScreen />}
+        />
+        <Route path='/admin/product/:id/edit' element={<ProductEditScreen />} />
+      </Route>
     </Route>
   )
 )
@@ -28,8 +55,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      {' '}
-      <RouterProvider router={router} />
+      <PayPalScriptProvider deferLoading={true}>
+        {' '}
+        <RouterProvider router={router} />
+      </PayPalScriptProvider>
     </Provider>
   </React.StrictMode>
 )

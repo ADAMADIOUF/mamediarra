@@ -80,32 +80,7 @@ const navbarData = [
       { id: nanoid(), name: 'Gift Cards', link: '/shop/gift-cards' },
     ],
   },
-  {
-    id: nanoid(),
-    title: 'About Us',
-    categories: [
-      { id: nanoid(), name: 'Our Story', link: '/about/our-story' },
-      { id: nanoid(), name: 'Meet the Team', link: '/about/meet-the-team' },
-      { id: nanoid(), name: 'Careers', link: '/about/careers' },
-    ],
-  },
-  {
-    id: nanoid(),
-    title: 'Contact',
-    categories: [
-      {
-        id: nanoid(),
-        name: 'Customer Support',
-        link: '/contact/customer-support',
-      },
-      { id: nanoid(), name: 'Feedback', link: '/contact/feedback' },
-      {
-        id: nanoid(),
-        name: 'Media Inquiries',
-        link: '/contact/media-inquiries',
-      },
-    ],
-  },
+  
 ]
 
 export default navbarData
