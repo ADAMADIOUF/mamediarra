@@ -1668,16 +1668,103 @@ h2 {
   border-color: #007bff;
 }
 
+/* OrderScreen */
 .order-screen {
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .order-details {
-  display: flex;
-  flex-direction: column;
   margin-bottom: 20px;
 }
 
+.info-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #f5a623;
+  padding-bottom: 5px;
+}
+
+.info-text {
+  margin: 5px 0;
+  line-height: 1.6;
+}
+
+.order-items {
+  margin-top: 20px;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ececec;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.item-image img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.item-details {
+  flex-grow: 1;
+}
+
+.item-link {
+  font-weight: bold;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.item-price {
+  color: #555;
+}
+
+.order-summary {
+  margin-top: 20px;
+  border-top: 2px solid #f5a623;
+  padding-top: 15px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0;
+}
+
+.payment-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.btn-deliver {
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-deliver:hover {
+  background-color: #218838;
+}
+
+/* ShippingScreen */
 .shipping-info, .payment-info, .order-items {
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -1992,5 +2079,174 @@ h1 {
 
   .btn-update {
     padding: 8px;
+  }
+}
+/* UserListScreen.css */
+
+.container {
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+/* Flex container for the user list */
+.user-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between user cards */
+}
+
+/* Card for each user */
+.user-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between; /* Aligns content in the card */
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+}
+
+/* User info section */
+.user-info {
+  display: flex;
+  flex-direction: column; /* Stacks user info vertically */
+}
+
+/* Button styles */
+.btn {
+  padding: 8px 12px;
+  margin-left: 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-light {
+  background-color: #f0f0f0; /* Light background for edit button */
+  color: #333;
+}
+
+.btn-light:hover {
+  background-color: #e0e0e0; /* Darker on hover */
+}
+
+.btn-danger {
+  background-color: #dc3545; /* Red background for delete button */
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c82333; /* Darker on hover */
+}
+
+/* Icon styles */
+.fa-check {
+  color: green; /* Green for admin indicator */
+}
+
+.fa-times {
+  color: red; /* Red for non-admin indicator */
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .user-list {
+    flex-direction: row; /* Change to row layout on larger screens */
+    flex-wrap: wrap; /* Allow wrapping of user cards */
+  }
+
+  .user-card {
+    width: calc(33.33% - 10px); /* 3 cards per row with gap */
+  }
+}
+
+@media (max-width: 767px) {
+  .user-card {
+    width: 100%; /* Full width for mobile */
+  }
+}
+/* UserEditScreen.css */
+
+.container {
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+/* Styling for the back button */
+.btn-back {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn-back:hover {
+  background-color: #e0e0e0;
+}
+
+/* Form styling */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between form fields */
+}
+
+/* Form group styling */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+input[type='text'],
+input[type='email'] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Checkbox styling */
+input[type='checkbox'] {
+  margin-right: 5px;
+}
+
+/* Update button styling */
+.btn-update {
+  padding: 10px 15px;
+  background-color: #007bff; /* Primary color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-update:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px; /* Less padding on mobile */
+  }
+}
+
+@media (min-width: 769px) {
+  .container {
+    max-width: 600px; /* Max width for larger screens */
+    margin: auto; /* Center the form */
   }
 }

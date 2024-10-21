@@ -104,17 +104,17 @@ const OrderScreen = () => {
     <Message variant='danger' />
   ) : (
     <div className='order-screen'>
-      <h1>Order id {order._id}</h1>
+      <h1 className='order-title'>Order id {order._id}</h1>
       <div className='order-details'>
         <div className='shipping-info'>
-          <h2>Shipping</h2>
-          <p>
+          <h2 className='info-title'>Shipping</h2>
+          <p className='info-text'>
             <strong>Name:</strong> {order.user.name}
           </p>
-          <p>
+          <p className='info-text'>
             <strong>Email:</strong> {order.user.email}
           </p>
-          <p>
+          <p className='info-text'>
             <strong>Address:</strong> {order.shippingAddress.address},{' '}
             {order.shippingAddress.city}, {order.shippingAddress.postalCode},{' '}
             {order.shippingAddress.country}
@@ -128,8 +128,8 @@ const OrderScreen = () => {
           )}
         </div>
         <div className='payment-info'>
-          <h2>Payment Method</h2>
-          <p>
+          <h2 className='info-title'>Payment Method</h2>
+          <p className='info-text'>
             <strong>Method:</strong> {order.paymentMethod}
           </p>
           {order.isPaid ? (
@@ -141,15 +141,17 @@ const OrderScreen = () => {
           )}
         </div>
         <div className='order-items'>
-          <h2>Order Items</h2>
+          <h2 className='info-title'>Order Items</h2>
           {order.orderItems.map((item, index) => (
             <div className='order-item' key={index}>
               <div className='item-image'>
                 <img src={item.images[0]} alt={item.name} />
               </div>
               <div className='item-details'>
-                <Link to={`/product/${item.product}`}>{item.name}</Link>
-                <p>
+                <Link to={`/product/${item.product}`} className='item-link'>
+                  {item.name}
+                </Link>
+                <p className='item-price'>
                   {item.qty} x {item.price} CFA = {item.qty * item.price} CFA
                 </p>
               </div>
@@ -158,23 +160,23 @@ const OrderScreen = () => {
         </div>
       </div>
       <div className='order-summary'>
-        <h2>Order Summary</h2>
-        <div>
+        <h2 className='info-title'>Order Summary</h2>
+        <div className='summary-row'>
           <span>Items:</span> <span>{order.itemsPrice} CFA</span>
         </div>
-        <div>
+        <div className='summary-row'>
           <span>Shipping:</span> <span>{order.shippingPrice} CFA</span>
         </div>
-        <div>
+        <div className='summary-row'>
           <span>Tax:</span> <span>{order.taxPrice} CFA</span>
         </div>
-        <div>
+        <div className='summary-row'>
           <span>Total:</span> <span>{order.totalPrice} CFA</span>
         </div>
         {order.paymentMethod === 'Cash on Delivery' && !order.isPaid && (
           <div className='payment-section'>
             {loadingPay && <Loader />}
-            {isPending ? <Loader /> : <h1>contact form</h1>}
+            {isPending ? <Loader /> : <h1>Contact form</h1>}
           </div>
         )}
         {order.paymentMethod !== 'Cash on Delivery' && !order.isPaid && (
@@ -200,6 +202,7 @@ const OrderScreen = () => {
       </div>
     </div>
   )
+
 }
 
 export default OrderScreen
