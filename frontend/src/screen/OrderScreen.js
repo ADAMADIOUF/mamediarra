@@ -11,6 +11,7 @@ import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js'
 import Message from '../components/Message'
 import Loader from '../components/Loading'
 import { useSelector } from 'react-redux'
+import ContactForm from '../components/ContactForm'
 
 const OrderScreen = () => {
   useEffect(() => {
@@ -176,7 +177,7 @@ const OrderScreen = () => {
         {order.paymentMethod === 'Cash on Delivery' && !order.isPaid && (
           <div className='payment-section'>
             {loadingPay && <Loader />}
-            {isPending ? <Loader /> : <h1>Contact form</h1>}
+            {isPending ? <Loader /> : <ContactForm/>}
           </div>
         )}
         {order.paymentMethod !== 'Cash on Delivery' && !order.isPaid && (

@@ -128,6 +128,7 @@ const updatedUser = asyncHandler(async (req, res) => {
     throw new Error('User not  found')
   }
 })
+
 export {
   login,
   register,

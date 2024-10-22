@@ -82,6 +82,7 @@ const getOrders = asyncHandler(async (req, res) => {
   const orders = await Order.find({}).populate('user', 'id name')
   res.status(200).json(orders)
 })
+
 export {
   addOrderItems,
   getMyOrders,
@@ -89,4 +90,5 @@ export {
   updatedOrderToPaid,
   updatedOrderToDelivered,
   getOrders,
+  
 }

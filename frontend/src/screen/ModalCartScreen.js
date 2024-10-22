@@ -27,7 +27,7 @@ const ModalCartScreen = ({ closeModal }) => {
 
   const checkoutHandler = () => {
     navigate('/login?redirect=/shipping')
-    closeModal() // Close the modal after proceeding to checkout
+
   }
 
   return (
@@ -95,7 +95,7 @@ const ModalCartScreen = ({ closeModal }) => {
             <button
               className='checkout-button'
               disabled={cartItems.length === 0}
-              onClick={checkoutHandler} // Close modal after proceeding to checkout
+              onClick={checkoutHandler} 
             >
               Proceed To Checkout
             </button>

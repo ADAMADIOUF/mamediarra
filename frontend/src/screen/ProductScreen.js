@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link,  useParams } from 'react-router-dom'
 import Rating from '../components/Rating'
-import { useGetproductDetailQuery } from '../slices/productApiSlice'
+import {
+  useCreateReviewMutation,
+  useDeleteReviewMutation,
+  useGetproductDetailQuery,
+} from '../slices/productApiSlice'
 import Message from '../components/Message'
 import Loader from '../components/Loading'
 import RecoomendProductScreen from './RecommendProductScreen'
 import { addToCart } from '../slices/cartSlice'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Modal from '../components/Modal'
 
 import ModalCartScreen from './ModalCartScreen'
-import { FaMinus, FaPlus } from 'react-icons/fa'
+import { FaMinus, FaPlus, FaTrash } from 'react-icons/fa'
+import { toast } from 'react-toastify'
 
 
 const ProductScreen = () => {
@@ -23,11 +28,17 @@ const ProductScreen = () => {
 
   const [mainImage, setMainImage] = useState('')
   const { id: productId } = useParams()
-  const navigate = useNavigate()
  const dispatch = useDispatch()
  const [qty, setQty] = useState(1)
+ const [rating, setRating] = useState(0)
+ const [comment, setComment] = useState('')
+ const [createReview, { isLoading: loadingProductReview }] =
+   useCreateReviewMutation()
+ const [deleteReview, { isLoading: loadingdeletedReview }] =
+   useDeleteReviewMutation()
+ const { userInfo } = useSelector((state) => state.auth)
   const {
-    data: product,
+    data: product,refetch,
     isLoading: loading,
     error,
   } = useGetproductDetailQuery(productId)
@@ -54,7 +65,31 @@ const addToCartHandler = () => {
   dispatch(addToCart({ ...product, qty }))
   openModal() 
 }
-
+const submitHandler = async (e) => {
+  e.preventDefault()
+  try {
+    await createReview({
+      productId,
+      rating,
+      comment,
+    }).unwrap()
+    refetch()
+    toast.success('Review Submited')
+    setRating(0)
+    setComment('')
+  } catch (error) {
+    toast.error(error?.data?.message || error.error)
+  }
+}
+const deleteReviewHandler = async (reviewId) => {
+  try {
+    await deleteReview({ productId, reviewId }).unwrap()
+    refetch()
+    toast.success('Review Deleted')
+  } catch (error) {
+    toast.error(error?.data?.message || error.error)
+  }
+}
   if (loading) {
     return <Loader />
   }
@@ -314,8 +349,81 @@ const addToCartHandler = () => {
                   >
                     Add to Cart
                   </button>
-                  <button className="add-to-cart-btn">view whishlist</button>
+                  <button className='add-to-cart-btn'>view whishlist</button>
+                </div>
+                <div className='reviews-section'>
+                  <div className='reviews-header'>
+                    <h2>Reviews</h2>
+                    {product.reviews.length === 0 && (
+                      <Message>No reviews</Message>
+                    )}
+                  </div>
 
+                  <div className='reviews-list'>
+                    {product.reviews.map((review) => (
+                      <div key={review._id} className='review-item'>
+                        <strong>{review.name}</strong>
+                        <Rating value={review.rating} />
+                        <p>{review.createdAt.substring(0, 10)}</p>
+                        <p>{review.comment}</p>
+                        {userInfo && review.user === userInfo._id && (
+                          <button
+                            className='btn-delete'
+                            onClick={() => deleteReviewHandler(review._id)}
+                          >
+                            <FaTrash />
+                          </button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className='review-form'>
+                    <h2>Write a Customer Review</h2>
+                    {loadingProductReview && <Loader />}
+                    {userInfo ? (
+                      <form onSubmit={submitHandler}>
+                        <div className='form-group'>
+                          <label htmlFor='rating'>Rating</label>
+                          <select
+                            id='rating'
+                            value={rating}
+                            onChange={(e) => setRating(Number(e.target.value))}
+                          >
+                            <option value=''>Select...</option>
+                            <option value='1'>1 - Poor</option>
+                            <option value='2'>2 - Fair</option>
+                            <option value='3'>3 - Good</option>
+                            <option value='4'>4 - Very Good</option>
+                            <option value='5'>5 - Excellent</option>
+                          </select>
+                        </div>
+
+                        <div className='form-group'>
+                          <label htmlFor='comment'>Comment</label>
+                          <textarea
+                            id='comment'
+                            rows='3'
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)}
+                          />
+                        </div>
+
+                        <button
+                          className='btn-submit'
+                          disabled={loadingProductReview}
+                          type='submit'
+                        >
+                          Submit
+                        </button>
+                      </form>
+                    ) : (
+                      <Message>
+                        Please <Link to={`/login`}>Sign In</Link> to write a
+                        review
+                      </Message>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>

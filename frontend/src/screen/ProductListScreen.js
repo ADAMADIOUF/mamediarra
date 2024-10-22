@@ -68,15 +68,16 @@ const ProductListScreen = () => {
               <div>NAME</div>
               <div>PRICE</div>
               <div>CATEGORY</div>
+              <div>SUBCATEGORY</div>
               <div>BRAND</div>
-              <div>ACTIONS</div>
             </div>
             {data.products.map((product) => (
-              <div className='product-item' key={product._id}>
+              <div className='product-item-screen' key={product._id}>
                 <div>{product._id}</div>
                 <div>{product.name}</div>
                 <div>{product.price}</div>
                 <div>{product.category}</div>
+                <div>{product.subcategory}</div>
                 <div>{product.brand}</div>
                 <div>
                   <Link to={`/admin/product/${product._id}/edit`}>

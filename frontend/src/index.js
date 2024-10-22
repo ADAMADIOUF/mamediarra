@@ -26,6 +26,9 @@ import ProductEditScreen from './screen/ProductEditScreen';
 import UserListScreen from './screen/UserListScreen';
 import UserEditScreen from './screen/UserEditScreen';
 import OrderListScreen from './screen/OrderListScreen';
+import MenClothing from './pages/MenClothing';
+import KidsClothing from './pages/KidsClothing';
+import WomenClothing from './pages/WomenClothing';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
@@ -33,6 +36,9 @@ const router = createBrowserRouter(
       <Route path='/page/:pageNumber' element={<Home />} />
       <Route path='/product/:id' element={<ProductScreen />} />
       <Route path='/shop' element={<HomeProducts />} />
+      <Route path='/clothing/mens' element={<MenClothing />} />
+      <Route path='/clothing/kids' element={<WomenClothing />} />
+      <Route path='/clothing/womens' element={<KidsClothing />} />
       <Route path='/cart' element={<CartScreen />} />
       <Route path='/login' element={<LoginScreen />} />
       <Route path='/register' element={<RegisterScreen />} />
@@ -50,6 +56,7 @@ const router = createBrowserRouter(
           element={<ProductListScreen />}
         />
         <Route path='/admin/orderlist' element={<OrderListScreen />} />
+
         <Route path='/admin/product/:id/edit' element={<ProductEditScreen />} />
         <Route path='/admin/userlist' element={<UserListScreen />} />
         <Route path='/admin/user/:id/edit' element={<UserEditScreen />} />

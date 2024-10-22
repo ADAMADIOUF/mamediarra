@@ -49,7 +49,17 @@ const getPorductsShoes = asyncHandler(async (req, res) => {
   res.json({ products })
 })
 const getPorductsClothing = asyncHandler(async (req, res) => {
-  const products = await Product.find({ category: 'Clothing' })
+  const { subcategory } = req.query 
+
+  let query = { category: 'Clothing' }
+
+  // Add subcategory filter if provided
+  if (subcategory) {
+    query.subcategory = subcategory
+  }
+
+  const products = await Product.find(query) // Fetch products based on category and subcategory
+
   res.json({ products })
 })
 const getPorductsAccesory = asyncHandler(async (req, res) => {
@@ -60,6 +70,7 @@ const getPorductsAfrican = asyncHandler(async (req, res) => {
   const products = await Product.find({ category: 'African' })
   res.json({ products })
 })
+
 const getSingleProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id)
   if (product) {
@@ -76,6 +87,7 @@ const createProduct = asyncHandler(async (req, res) => {
     images: ['/images/sample.jpg', '/images/sample.jpg'],
     brand: 'sample brand',
     category: 'sample category',
+    subcategory: 'Kids',
     countInStock: 0,
     numReviews: 0,
     description: 'sample description',
@@ -84,8 +96,16 @@ const createProduct = asyncHandler(async (req, res) => {
   res.status(201).json(createdProduct)
 })
 const updateProduct = asyncHandler(async (req, res) => {
-  const { name, price, description, images, brand, category, countInStock } =
-    req.body
+  const {
+    name,
+    price,
+    description,
+    images,
+    brand,
+    category,
+    subcategory,
+    countInStock,
+  } = req.body
   const product = await Product.findById(req.params.id)
   if (product) {
     ;(product.name = name),
@@ -94,6 +114,7 @@ const updateProduct = asyncHandler(async (req, res) => {
       (product.images = images),
       (product.brand = brand),
       (product.category = category),
+       (product.subcategory = subcategory),
       (product.countInStock = countInStock)
     const updatedProduct = await product.save()
     res.json(updatedProduct)

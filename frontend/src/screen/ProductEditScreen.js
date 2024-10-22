@@ -17,6 +17,7 @@ const ProductEditScreen = () => {
   const [images, setImages] = useState([])
   const [brand, setBrand] = useState('')
   const [category, setCategory] = useState('')
+    const [subcategory, setSubCategory] = useState('')
   const [countInStock, setCountInStock] = useState(0)
   const [description, setDescription] = useState('')
   const {
@@ -37,10 +38,12 @@ const ProductEditScreen = () => {
       setImages(product.images)
       setBrand(product.brand)
       setCategory(product.category)
+      setSubCategory(product.subcategory)
       setCountInStock(product.countInStock)
       setDescription(product.description)
     }
   }, [product])
+
 
   const submitHandler = async (e) => {
     e.preventDefault()
@@ -51,6 +54,7 @@ const ProductEditScreen = () => {
       images,
       brand,
       category,
+      subcategory,
       countInStock,
       description,
     }
@@ -180,6 +184,16 @@ const ProductEditScreen = () => {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
                 required
+              />
+            </div>
+            <div className='form-group'>
+              <label htmlFor='subCategory'>Subcategory</label>
+              <input
+                type='text'
+                id='subCategory'
+                placeholder='Enter subcategory'
+                value={subcategory}
+                onChange={(e) => setSubCategory(e.target.value)}
               />
             </div>
             <div className='form-group'>

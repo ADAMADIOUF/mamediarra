@@ -6,7 +6,6 @@ import Message from '../components/Message'
 import { addToCart, removeFromCart } from '../slices/cartSlice'
 
 const CartScreen = () => {
-  const dispatch = useDispatch()
   const navigate = useNavigate()
   const { cartItems } = useSelector((state) => state.cart)
 

@@ -3,11 +3,12 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { FaTimes } from 'react-icons/fa'
 import { useGetOrdersQuery } from '../slices/orderApiSlice'
 import Loader from '../components/Loading'
-import { Button, Table } from 'react-bootstrap'
 import Message from '../components/Message'
+import { Button } from 'react-bootstrap'
+
 const OrderListScreen = () => {
   const { data: orders, isLoading, error } = useGetOrdersQuery()
-  console.log(orders)
+
   return (
     <>
       <h1>Orders</h1>
@@ -16,50 +17,47 @@ const OrderListScreen = () => {
       ) : error ? (
         <Message variant='danger'>{error}</Message>
       ) : (
-        <Table striped hover responsive className='table-sm'>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>USER</th>
-              <th>DATE</th>
-              <th>TOTAL</th>
-              <th>PAID</th>
-              <th>DELIVERED</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders.map((order) => (
-              <tr key={order._id}>
-                <td>{order._id}</td>
-                <td>{order.user && order.user.name}</td>
-                <td>{order.createdAt.substring(0, 10)}</td>
-                <td>{order.totalPrice}</td>
-                <td>
-                  {order.isPaid ? (
-                    order.paidAt.substring(0, 10)
-                  ) : (
-                    <FaTimes style={{ color: 'red' }} />
-                  )}
-                </td>
-                <td>
-                  {order.isDelivered ? (
-                    order.deliveredAt.substring(0, 10)
-                  ) : (
-                    <FaTimes style={{ color: 'red' }} />
-                  )}
-                </td>
-                <td>
-                  <LinkContainer to={`/order/${order._id}`}>
-                    <Button variant='light' className='btn-sm'>
-                      Details
-                    </Button>
-                  </LinkContainer>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
+        <div className='order-list'>
+          {orders.map((order) => (
+            <div className='order-card' key={order._id}>
+              <div className='order-item'>
+                <strong>ID:</strong> {order._id}
+              </div>
+              <div className='order-item'>
+                <strong>User:</strong> {order.user && order.user.name}
+              </div>
+              <div className='order-item'>
+                <strong>Date:</strong> {order.createdAt.substring(0, 10)}
+              </div>
+              <div className='order-item'>
+                <strong>Total:</strong> ${order.totalPrice}
+              </div>
+              <div className='order-item'>
+                <strong>Paid:</strong>{' '}
+                {order.isPaid ? (
+                  order.paidAt.substring(0, 10)
+                ) : (
+                  <FaTimes style={{ color: 'red' }} />
+                )}
+              </div>
+              <div className='order-item'>
+                <strong>Delivered:</strong>{' '}
+                {order.isDelivered ? (
+                  order.deliveredAt.substring(0, 10)
+                ) : (
+                  <FaTimes style={{ color: 'red' }} />
+                )}
+              </div>
+              <div className='order-item'>
+                <LinkContainer to={`/order/${order._id}`}>
+                  <Button variant='light' className='btn-sm'>
+                    Details
+                  </Button>
+                </LinkContainer>
+              </div>
+            </div>
+          ))}
+        </div>
       )}
     </>
   )
