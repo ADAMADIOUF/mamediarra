@@ -7,6 +7,7 @@ import {
   FaBars,
   FaTimes,
   FaShoppingCart,
+  FaHeart,
 } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import CartButton from './CartButton'
@@ -99,7 +100,6 @@ const toggleDropdown = () => {
         <div className='nav-icon'>
           {userInfo ? (
             <div className='register-dropdown'>
-              {/* Button to toggle dropdown */}
               <button onClick={toggleDropdown} className='nav-user'>
                 {userInfo.name}
               </button>
@@ -108,6 +108,9 @@ const toggleDropdown = () => {
                 <div className='dropdown-user'>
                   <Link to='/profile' className='dropdown-item'>
                     <FaUser /> Profile
+                  </Link>
+                  <Link to='/whislist' className='dropdown-ite'>
+                    <FaHeart /> wishlist
                   </Link>
                   <button onClick={logoutHandler} className='dropdown-item'>
                     Logout
@@ -133,7 +136,6 @@ const toggleDropdown = () => {
                 <Link to='/admin/userlist' className='admin-dropdown-item'>
                   Users
                 </Link>
-                 
               </div>
             </div>
           )}

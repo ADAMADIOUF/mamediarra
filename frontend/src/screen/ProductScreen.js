@@ -14,8 +14,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import Modal from '../components/Modal'
 
 import ModalCartScreen from './ModalCartScreen'
-import { FaMinus, FaPlus, FaTrash } from 'react-icons/fa'
+import { FaHeart, FaMinus, FaPlus, FaTrash } from 'react-icons/fa'
 import { toast } from 'react-toastify'
+import { useAddToWishlistMutation } from '../slices/whislistApiSlice'
 
 
 const ProductScreen = () => {
@@ -36,6 +37,8 @@ const ProductScreen = () => {
    useCreateReviewMutation()
  const [deleteReview, { isLoading: loadingdeletedReview }] =
    useDeleteReviewMutation()
+   const [addToWishlist, { isLoading: loadingAddToWishlist }] =
+     useAddToWishlistMutation()
  const { userInfo } = useSelector((state) => state.auth)
   const {
     data: product,refetch,
@@ -88,6 +91,14 @@ const deleteReviewHandler = async (reviewId) => {
     toast.success('Review Deleted')
   } catch (error) {
     toast.error(error?.data?.message || error.error)
+  }
+}
+const addToWishlistHandler = async () => {
+  try {
+    await addToWishlist(productId).unwrap() // Call the mutation to add to wishlist
+    toast.success('Product added to wishlist!')
+  } catch (error) {
+    toast.error('Failed to add to wishlist. Please try again.')
   }
 }
   if (loading) {
@@ -349,7 +360,13 @@ const deleteReviewHandler = async (reviewId) => {
                   >
                     Add to Cart
                   </button>
-                  <button className='add-to-cart-btn'>view whishlist</button>
+                  <button
+                    className='btn btn-danger'
+                    onClick={addToWishlistHandler}
+                    disabled={loadingAddToWishlist}
+                  >
+                    <FaHeart /> Add to Wishlist
+                  </button>
                 </div>
                 <div className='reviews-section'>
                   <div className='reviews-header'>
