@@ -14,6 +14,8 @@ import CartButton from './CartButton'
 import { clearCartItems } from '../slices/cartSlice'
 import { logout } from '../slices/authSlice'
 import { useLogoutMutation } from '../slices/userApiSlice'
+import Dropdown from 'react-dropdown'
+import 'react-dropdown/style.css' // Import styles for react-dropdown
 
 const NavigationMenu = ({ toggleCart }) => {
   const navigate = useNavigate()
@@ -32,28 +34,21 @@ const NavigationMenu = ({ toggleCart }) => {
       console.log(error)
     }
   }
- 
+
   const [activeCategory, setActiveCategory] = useState(null)
   const [isNavbar, setIsNavbar] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [dropdownOpen, setDropdownOpen] = useState(false)
 
   const toggleNav = () => {
     setIsNavbar((prev) => !prev)
-  }
-
-  const handleCategoryClick = (id) => {
-    setActiveCategory(activeCategory === id ? null : id)
   }
 
   const handleScroll = () => {
     const scrollTop = window.scrollY
     setIsScrolled(scrollTop > 0)
   }
-const [dropdownOpen, setDropdownOpen] = useState(false)
 
-const toggleDropdown = () => {
-  setDropdownOpen(!dropdownOpen)
-}
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
     return () => {
@@ -62,7 +57,7 @@ const toggleDropdown = () => {
   }, [])
 
   return (
-    <nav className={`nav-center ${isScrolled ? 'scrolled' : ''}`}>
+    <nav className={`nav-center-nav ${isScrolled ? 'scrolled' : ''}`}>
       <div className='nav-header'>
         <div className='logo'>
           <Link to={`/`}>
@@ -78,39 +73,37 @@ const toggleDropdown = () => {
         <ul className={`nav-links ${isNavbar ? 'show' : ''}`}>
           {navLinks.map((navItem) => (
             <li key={navItem.id} className='nav-link'>
-              <button
-                onClick={() => handleCategoryClick(navItem.id)}
-                className='nav-button'
-                aria-expanded={activeCategory === navItem.id}
-              >
-                {navItem.title}
-              </button>
-              {activeCategory === navItem.id && navItem.categories && (
-                <ul className='dropdown'>
-                  {navItem.categories.map((category) => (
-                    <li key={category.id} className='dropdown-item'>
-                      <Link to={category.link || '#'}>{category.name}</Link>
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <Dropdown
+                options={navItem.categories.map((category) => ({
+                  value: category.link,
+                  label: category.name,
+                }))}
+                onChange={(option) => navigate(option.value)}
+                controlClassName='dropdown-control'
+                placeholderClassName='dropdown-placeholder'
+                arrowClassName='dropdown-arrow'
+                placeholder={navItem.title}
+              />
             </li>
           ))}
         </ul>
+
         <div className='nav-icon'>
           {userInfo ? (
             <div className='register-dropdown'>
-              <button onClick={toggleDropdown} className='nav-user'>
+              <button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className='nav-user'
+              >
                 {userInfo.name}
               </button>
-
               {dropdownOpen && (
                 <div className='dropdown-user'>
                   <Link to='/profile' className='dropdown-item'>
                     <FaUser /> Profile
                   </Link>
-                  <Link to='/whislist' className='dropdown-ite'>
-                    <FaHeart /> wishlist
+                  <Link to='/wishlist' className='dropdown-item'>
+                    <FaHeart /> Wishlist
                   </Link>
                   <button onClick={logoutHandler} className='dropdown-item'>
                     Logout
