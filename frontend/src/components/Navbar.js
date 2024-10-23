@@ -16,6 +16,7 @@ import { logout } from '../slices/authSlice'
 import { useLogoutMutation } from '../slices/userApiSlice'
 import Dropdown from 'react-dropdown'
 import 'react-dropdown/style.css' // Import styles for react-dropdown
+import SearchProduct from './SearchProduct'
 
 const NavigationMenu = ({ toggleCart }) => {
   const navigate = useNavigate()
@@ -87,7 +88,7 @@ const NavigationMenu = ({ toggleCart }) => {
             </li>
           ))}
         </ul>
-
+<SearchProduct/>
         <div className='nav-icon'>
           {userInfo ? (
             <div className='register-dropdown'>

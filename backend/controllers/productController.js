@@ -44,7 +44,15 @@ const getPorducts = asyncHandler(async (req, res) => {
 
 
 const getPorductsShoes = asyncHandler(async (req, res) => {
-  const products = await Product.find({ category: 'Shoes' })
+  const { subcategory } = req.query
+
+  let query = { category: 'Shoes' }
+
+  if (subcategory) {
+    query.subcategory = subcategory
+  }
+
+  const products = await Product.find(query)
 
   res.json({ products })
 })
@@ -53,21 +61,39 @@ const getPorductsClothing = asyncHandler(async (req, res) => {
 
   let query = { category: 'Clothing' }
 
-  // Add subcategory filter if provided
+ 
   if (subcategory) {
     query.subcategory = subcategory
   }
 
-  const products = await Product.find(query) // Fetch products based on category and subcategory
+  const products = await Product.find(query) 
 
   res.json({ products })
 })
 const getPorductsAccesory = asyncHandler(async (req, res) => {
-  const products = await Product.find({ category: 'Accesory' })
+  const { subcategory } = req.query
+
+  let query = { category: 'Accesory' }
+
+  if (subcategory) {
+    query.subcategory = subcategory
+  }
+
+  const products = await Product.find(query)
+
   res.json({ products })
 })
 const getPorductsAfrican = asyncHandler(async (req, res) => {
-  const products = await Product.find({ category: 'African' })
+  const { subcategory } = req.query
+
+  let query = { category: 'Africain' }
+
+  if (subcategory) {
+    query.subcategory = subcategory
+  }
+
+  const products = await Product.find(query)
+
   res.json({ products })
 })
 

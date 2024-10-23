@@ -7,20 +7,22 @@ import HeroThree from './HeroThree'
 import Client from './Client'
 import HomeProduct from './HomeProduct'
 import LastProducts from './LastProducts'
+import { useParams } from 'react-router-dom'
 
 
 const Home = () => {
+    const { pageNumber, keyword } = useParams()
   return (
     <div>
-      <Hero/>
-      <HeroTwo/>
-      <HomeProduct/>
-      <Uniques/>
-      <UniqueTwo/>
-      <HeroThree/>
-    <HomeProduct/>
-      <Client/>
-  <LastProducts/>
+      {!keyword && <Hero />}
+      {!keyword && <HeroTwo />}
+      <HomeProduct />
+      <Uniques />
+      <UniqueTwo />
+      {!keyword && <HeroThree />}
+      <HomeProduct />
+      {!keyword && <Client />}
+      <LastProducts />
     </div>
   )
 }

@@ -78,7 +78,8 @@ const OrderScreen = () => {
         purchase_units: [
           {
             amount: {
-              value: order.totalPrice.toString(), // Send as a string without decimals
+              value: order.totalPrice.toString(),
+              currency_code: 'CFA', // Ensure this matches your PayPal script currency
             },
           },
         ],
@@ -87,6 +88,8 @@ const OrderScreen = () => {
         return orderId
       })
   }
+
+
 
 
   const deliverHandler = async () => {

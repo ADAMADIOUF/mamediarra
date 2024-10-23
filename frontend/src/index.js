@@ -30,16 +30,38 @@ import OrderListScreen from './screen/OrderListScreen';
 import MenClothing from './pages/MenClothing';
 import KidsClothing from './pages/KidsClothing';
 import WomenClothing from './pages/WomenClothing';
+import MenShoes from './pages/MenShoes';
+import WomenShoes from './pages/WomenShoes';
+import KidShoes from './pages/KidShoes';
+import Bag from './pages/Bag';
+import Jwelry from './pages/Jwelry';
+import Hats from './pages/Hats';
+import Belts from './pages/Belts';
+import Tailored from './pages/Tailored';
+import CustomDesign from './pages/CustomDesign';
+import HandCraft from './pages/HandCraft';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index={true} path='/' element={<Home />} />
+      <Route path='/search/:keyword' element={<Home />} />
       <Route path='/page/:pageNumber' element={<Home />} />
       <Route path='/product/:id' element={<ProductScreen />} />
       <Route path='/shop' element={<HomeProducts />} />
       <Route path='/clothing/mens' element={<MenClothing />} />
       <Route path='/clothing/kids' element={<WomenClothing />} />
       <Route path='/clothing/womens' element={<KidsClothing />} />
+      <Route path='/shoes/mens' element={<MenShoes />} />
+      <Route path='/shoes/womens' element={<WomenShoes />} />
+      <Route path='/shoes/kids' element={<KidShoes />} />
+      <Route path='/accessories/bags' element={<Bag />} />
+      <Route path='/accessories/jewelry' element={<Jwelry />} />
+      <Route path='/accessories/hats' element={<Hats />} />
+      <Route path='/accessories/belts' element={<Belts />} />
+      <Route path='/custom-african/clothing' element={<Tailored />} />
+      <Route path='/custom-african/designs' element={<CustomDesign />} />
+      <Route path='/custom-african/handcrafted' element={<HandCraft />} />
+       <Route path='/custom-african/handcrafted' element={<HandCraft />} />
       <Route path='/cart' element={<CartScreen />} />
       <Route path='/login' element={<LoginScreen />} />
       <Route path='/register' element={<RegisterScreen />} />

@@ -20,11 +20,7 @@ const navbarData = [
         name: 'Kids’ Clothing',
         link: '/clothing/kids',
       },
-      {
-        id: nanoid(),
-        name: 'Unisex Clothing',
-        link: '/clothing/unisex',
-      },
+      
     ],
   },
   {
@@ -34,7 +30,7 @@ const navbarData = [
       { id: nanoid(), name: 'Men’s Shoes', link: '/shoes/mens' },
       { id: nanoid(), name: 'Women’s Shoes', link: '/shoes/womens' },
       { id: nanoid(), name: 'Kids’ Shoes', link: '/shoes/kids' },
-      { id: nanoid(), name: 'Custom Shoes', link: '/shoes/custom' },
+      
     ],
   },
   {
@@ -62,11 +58,7 @@ const navbarData = [
         name: 'Handcrafted Items',
         link: '/custom-african/handcrafted',
       },
-      {
-        id: nanoid(),
-        name: 'Made-to-Order',
-        link: '/custom-african/made-to-order',
-      },
+      
     ],
   },
   {
@@ -74,10 +66,8 @@ const navbarData = [
     title: 'Shop',
     categories: [
       { id: nanoid(), name: 'Shop', link: '/shop' },
-      { id: nanoid(), name: 'New Arrivals', link: '/shop/new-arrivals' },
-      { id: nanoid(), name: 'Best Sellers', link: '/shop/best-sellers' },
-      { id: nanoid(), name: 'Sale', link: '/shop/sale' },
-      { id: nanoid(), name: 'Gift Cards', link: '/shop/gift-cards' },
+      
+      
     ],
   },
   
