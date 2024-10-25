@@ -40,7 +40,7 @@ const navbarData = [
       { id: nanoid(), name: 'Bags', link: '/accessories/bags' },
       { id: nanoid(), name: 'Jewelry', link: '/accessories/jewelry' },
       { id: nanoid(), name: 'Hats', link: '/accessories/hats' },
-      { id: nanoid(), name: 'Belts', link: '/accessories/belts' },
+      
     ],
   },
   {

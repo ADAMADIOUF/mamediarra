@@ -83,7 +83,7 @@ const LastProducts = () => {
             <div className={`lastProducts-project`} key={product.id}>
               <Link to={`/product/${product._id}`}>
                 <img
-                  src={product.images[0]}
+                  src={product.images[3]}
                   alt={product.name}
                   className='lastProducts-project-image'
                   onClick={() => handleOpenGallery(index)}

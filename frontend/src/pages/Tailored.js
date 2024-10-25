@@ -43,7 +43,7 @@ const Tailored = () => {
 
       <div className='clothing-container'>
         {menClothingProducts.length === 0 ? (
-          <p>No men's clothing available.</p>
+          <p>No  available comming soon.</p>
         ) : (
           menClothingProducts.map((product) => (
             <div key={product._id} className='product-clothing-card'>
