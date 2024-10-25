@@ -8,6 +8,7 @@ import Client from './Client'
 import HomeProduct from './HomeProduct'
 import LastProducts from './LastProducts'
 import { useParams } from 'react-router-dom'
+import LastHomeProduct from './LastHomeProduct'
 
 
 const Home = () => {
@@ -20,7 +21,7 @@ const Home = () => {
       <Uniques />
       <UniqueTwo />
       {!keyword && <HeroThree />}
-      <HomeProduct />
+     <LastHomeProduct/>
       {!keyword && <Client />}
       <LastProducts />
     </div>
