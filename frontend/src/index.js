@@ -40,6 +40,7 @@ import Belts from './pages/Belts';
 import Tailored from './pages/Tailored';
 import CustomDesign from './pages/CustomDesign';
 import HandCraft from './pages/HandCraft';
+import DashboardScreen from './screen/DashboardScreen';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
@@ -49,8 +50,8 @@ const router = createBrowserRouter(
       <Route path='/product/:id' element={<ProductScreen />} />
       <Route path='/shop' element={<HomeProducts />} />
       <Route path='/clothing/mens' element={<MenClothing />} />
-      <Route path='/clothing/kids' element={<WomenClothing />} />
-      <Route path='/clothing/womens' element={<KidsClothing />} />
+      <Route path='/clothing/kids' element={<KidsClothing />} />
+      <Route path='/clothing/womens' element={<WomenClothing />} />
       <Route path='/shoes/mens' element={<MenShoes />} />
       <Route path='/shoes/womens' element={<WomenShoes />} />
       <Route path='/shoes/kids' element={<KidShoes />} />
@@ -61,7 +62,7 @@ const router = createBrowserRouter(
       <Route path='/custom-african/clothing' element={<Tailored />} />
       <Route path='/custom-african/designs' element={<CustomDesign />} />
       <Route path='/custom-african/handcrafted' element={<HandCraft />} />
-       <Route path='/custom-african/handcrafted' element={<HandCraft />} />
+      <Route path='/custom-african/handcrafted' element={<HandCraft />} />
       <Route path='/cart' element={<CartScreen />} />
       <Route path='/login' element={<LoginScreen />} />
       <Route path='/register' element={<RegisterScreen />} />
@@ -74,6 +75,7 @@ const router = createBrowserRouter(
         <Route path='/order/:id' element={<OrderScreen />} />
       </Route>
       <Route path='' element={<AdminRoute />}>
+        <Route path='/admin/dashboard' element={<DashboardScreen />} />
         <Route path='/admin/productlist' element={<ProductListScreen />} />
         <Route
           path='/admin/productlist/:pageNumber'

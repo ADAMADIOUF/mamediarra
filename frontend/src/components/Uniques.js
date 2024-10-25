@@ -1,19 +1,13 @@
 import React from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import a from '../assets/unique1.png'
-import { useGetProductsQuery } from '../slices/productApiSlice'
+import { useGetProductsClothingQuery } from '../slices/productApiSlice'
 import Loading from './Loading'
 import Message from './Message'
 import Paginate from './Paginate'
 
 const Uniques = () => {
-  const { pageNumber = 1, keyword = '' } = useParams()
-
-  const {
-    data,
-    isLoading: loading,
-    error,
-  } = useGetProductsQuery({ pageNumber, keyword })
+  const { data, isLoading: loading, error } = useGetProductsClothingQuery()
 
   if (loading) {
     return <Loading />
@@ -27,6 +21,12 @@ const Uniques = () => {
     )
   }
 
+  // Filter for Women Clothing products
+  const womenClothingProducts = data.products.filter(
+    (product) =>
+      product.category === 'Clothing' && product.subcategory === 'Women'
+  )
+
   return (
     <>
       <div className='unique-container'>
@@ -34,18 +34,12 @@ const Uniques = () => {
           <img src={a} alt='Unique item' />
         </div>
         <div className='unique-products'>
-          {data.products.slice(0, 3).map((product) => (
+          {womenClothingProducts.slice(0, 3).map((product) => (
             <UniqueProduct key={product.id} product={product} />
           ))}
         </div>
-
-       
       </div>
-      <Paginate
-        pages={data.pages}
-        page={data.page}
-        keyword={keyword ? keyword : ''}
-      />
+     
     </>
   )
 }

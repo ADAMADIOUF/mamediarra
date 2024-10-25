@@ -1,6 +1,6 @@
 import React from 'react'
 import a from '../assets/hero.png'
-
+import {Link} from "react-router-dom"
 const HeroTwo = () => {
   return (
     <section className='hero-two '>
@@ -15,7 +15,7 @@ const HeroTwo = () => {
           something for everyone. Discover the beauty of effortless fashion with
           our carefully curated selection.
         </p>
-        <button className='btn'>Shop Now</button>
+        <Link to="/clothing/womens"><button className='btn'>Shop Now</button></Link>
       </div>
       <div className='hero-image-container'>
         <div className='hero-image-background'>

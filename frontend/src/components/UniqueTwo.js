@@ -1,19 +1,14 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import a from '../assets/unique2.png'
-import { useGetProductsQuery } from '../slices/productApiSlice'
+import { useGetProductsClothingQuery } from '../slices/productApiSlice'
 import Loading from './Loading'
 import Message from './Message'
 import Paginate from './Paginate'
 
 const Uniques = () => {
-  const { pageNumber = 1, keyword = '' } = useParams()
+  const { data, isLoading: loading, error } = useGetProductsClothingQuery()
 
-  const {
-    data,
-    isLoading: loading,
-    error,
-  } = useGetProductsQuery({ pageNumber, keyword })
 
   if (loading) {
     return <Loading />
@@ -26,12 +21,16 @@ const Uniques = () => {
       </Message>
     )
   }
+const menClothingProducts = data.products.filter(
+    (product) =>
+      product.category === 'Clothing' && product.subcategory === 'Men'
+  )
 
   return (
     <>
       <div className='unique-container'>
         <div className='unique-products'>
-          {data.products.slice(0, 3).map((product) => (
+          {menClothingProducts.slice(0, 3).map((product) => (
             <UniqueProduct key={product.id} product={product} />
           ))}
         </div>
@@ -39,11 +38,7 @@ const Uniques = () => {
           <img src={a} alt='Unique item' />
         </div>
       </div>
-      <Paginate
-        pages={data.pages}
-        page={data.page}
-        keyword={keyword ? keyword : ''}
-      />
+      
     </>
   )
 }

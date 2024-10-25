@@ -36,7 +36,7 @@ const cartSlice = createSlice({
     savePaymentMethod: (state, action) => {
       const paymentMethod = action.payload
       state.paymentMethod = paymentMethod
-      // If payment method is "Cash on Delivery", clear any existing shipping address
+      
       if (paymentMethod === 'Cash on Delivery') {
       }
       return updateCart(state)

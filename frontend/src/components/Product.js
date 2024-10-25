@@ -36,15 +36,12 @@ const Product = ({ product }) => {
           &#10094;
         </button>
 
-        <Link to={`/product/${product._id}`}>
+        
           <img
             src={product.images[currentImageIndex]}
             alt={product.name}
             className='unique-product-img'
           />
-        </Link>
-
-        
         <button
           className='next'
           onClick={nextImage}
@@ -67,7 +64,7 @@ const Product = ({ product }) => {
             text={`${product.numReviews} reviews`}
           />
         </div>
-        <h3 className='product-price'>{product.price} CFA</h3>
+        <h3 className='product-price'>${product.price}</h3>
       </div>
     </div>
   )

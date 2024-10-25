@@ -5,7 +5,7 @@ import { useGetProductsClothingQuery } from '../slices/productApiSlice'
 import Message from '../components/Message'
 import Loader from '../components/Loading'
 
-const Clothing = () => {
+const KidsClothing = () => {
   useEffect(() => {
     window.scroll({
       top: 0,
@@ -28,24 +28,24 @@ const Clothing = () => {
   }
 
   // Filter products specifically for Men's Clothing
-  const menClothingProducts = data.products.filter(
+  const kidsClothingProducts = data.products.filter(
     (product) =>
-      product.category === 'Clothing' && product.subcategory === 'Kids Clothing'
+      product.category === 'Clothing' && product.subcategory === 'Kids'
   )
 
   return (
     <>
-      <h2 className='section-title'>Men's Clothing Collection</h2>
+      <h2 className='section-title'>Kid's Clothing Collection</h2>
       <p className='section-description'>
         Keep your style sharp and sophisticated with our latest collection of
-        men's clothing.
+        kid's clothing.
       </p>
 
       <div className='clothing-container'>
-        {menClothingProducts.length === 0 ? (
-          <p>No men's clothing available.</p>
+        {kidsClothingProducts.length === 0 ? (
+          <p>No kid's clothing available.</p>
         ) : (
-          menClothingProducts.map((product) => (
+          kidsClothingProducts.map((product) => (
             <div key={product._id} className='product-clothing-card'>
               <Link to={`/product/${product._id}`}>
                 <img
@@ -56,13 +56,15 @@ const Clothing = () => {
               </Link>
               <div className='product-details-clothing'>
                 <Link to={`/product/${product._id}`}>
-                  <h3 className='product-title-clothing'>{product.name}</h3>
+                  <h3 className='product-title-clothing'>
+                    {product.name.substring(0, 20)}
+                  </h3>
                 </Link>
                 <Rating
                   value={product.rating}
                   text={`${product.numReviews} reviews`}
                 />
-                <p className='product-price-clothing'>{product.price} CFA</p>
+                <p className='product-price-clothing'>${product.price}</p>
               </div>
             </div>
           ))
@@ -72,4 +74,4 @@ const Clothing = () => {
   )
 }
 
-export default Clothing
+export default KidsClothing

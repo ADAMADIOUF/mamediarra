@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { FaTruck, FaShieldAlt, FaUndo } from 'react-icons/fa' // Importing icons
+import {Link} from "react-router-dom"
+import { FaTruck, FaShieldAlt, FaUndo } from 'react-icons/fa' 
 import a from '../assets/heroone.png'
 import b from '../assets/herotwo.png'
 import c from '../assets/herothree.png'
@@ -57,7 +58,8 @@ const Hero = () => {
         <div className='hero-details'>
           <h1>{texts[currentImageIndex]}</h1>
           <p>Discover the best products here.</p>
-          <button className='btn'>Shop Now</button>
+          <Link to="/shop">
+          <button className='btn'>Shop Now</button></Link>
         </div>
       </div>
 

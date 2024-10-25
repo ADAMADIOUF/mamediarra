@@ -28,24 +28,24 @@ const MenShoes = () => {
   }
 
   // Filter products specifically for Men's Clothing
-  const menClothingProducts = data.products.filter(
+  const menShoesProducts = data.products.filter(
     (product) =>
-      product.category === 'Shoes' && product.subcategory === 'Men Shoes'
+      product.category === 'Shoes' && product.subcategory === 'Men'
   )
 
   return (
     <>
-      <h2 className='section-title'>Men's Clothing Collection</h2>
+      <h2 className='section-title'>Men's Shoes Collection</h2>
       <p className='section-description'>
         Keep your style sharp and sophisticated with our latest collection of
-        men's clothing.
+        men's shoes.
       </p>
 
       <div className='clothing-container'>
-        {menClothingProducts.length === 0 ? (
-          <p>No men's clothing available.</p>
+        {menShoesProducts.length === 0 ? (
+          <p>No men's shoes available.</p>
         ) : (
-          menClothingProducts.map((product) => (
+          menShoesProducts.map((product) => (
             <div key={product._id} className='product-clothing-card'>
               <Link to={`/product/${product._id}`}>
                 <img
@@ -56,13 +56,15 @@ const MenShoes = () => {
               </Link>
               <div className='product-details-clothing'>
                 <Link to={`/product/${product._id}`}>
-                  <h3 className='product-title-clothing'>{product.name}</h3>
+                  <h3 className='product-title-clothing'>
+                    {product.name.substring(0, 20)}
+                  </h3>
                 </Link>
                 <Rating
                   value={product.rating}
                   text={`${product.numReviews} reviews`}
                 />
-                <p className='product-price-clothing'>{product.price} CFA</p>
+                <p className='product-price-clothing'>${product.price}</p>
               </div>
             </div>
           ))

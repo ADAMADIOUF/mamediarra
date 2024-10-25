@@ -3,10 +3,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import navLinks from '../dataNav'
 import {
   FaUser,
-  FaSearch,
   FaBars,
   FaTimes,
-  FaShoppingCart,
+
   FaHeart,
 } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
@@ -35,8 +34,6 @@ const NavigationMenu = ({ toggleCart }) => {
       console.log(error)
     }
   }
-
-  const [activeCategory, setActiveCategory] = useState(null)
   const [isNavbar, setIsNavbar] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [dropdownOpen, setDropdownOpen] = useState(false)
@@ -88,7 +85,7 @@ const NavigationMenu = ({ toggleCart }) => {
             </li>
           ))}
         </ul>
-<SearchProduct/>
+        <SearchProduct />
         <div className='nav-icon'>
           {userInfo ? (
             <div className='register-dropdown'>
@@ -121,6 +118,9 @@ const NavigationMenu = ({ toggleCart }) => {
             <div className='admin-dropdown'>
               <button className='admin-dropdown-toggle'>Admin</button>
               <div className='admin-dropdown-menu'>
+                <Link to='/admin/dashboard' className='admin-dropdown-item'>
+                  Dashboard
+                </Link>
                 <Link to='/admin/productlist' className='admin-dropdown-item'>
                   Products
                 </Link>
