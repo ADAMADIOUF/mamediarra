@@ -9,6 +9,8 @@ import {
   deletedUser,
   getUserByID,
   updatedUser,
+  forgotPassword,
+  resetPassword,
 } from '../controllers/userController.js'
 import { admin, protect } from '../middleware/authMiddleware.js'
 
@@ -17,6 +19,8 @@ router.route('/').post(register).get(protect, admin, getUsers)
 
 router.post('/logout', logout)
 router.post('/login', login)
+router.post('/forgot-password', forgotPassword) 
+router.put('/reset-password/:token', resetPassword)
 router
   .route('/profile')
   .get(protect, getUserProfile)

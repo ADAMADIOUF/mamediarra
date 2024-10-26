@@ -944,6 +944,7 @@ font-size: 1.5rem;
 /* Pagination */
 .pagination {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   padding: 20px 0;
 }
@@ -1478,7 +1479,7 @@ th {
   background-color: #f9f9f9; 
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  overflow-y: auto; /* Allow vertical scrolling */
+  overflow-y: auto; 
 }
 
 .cart-title {
@@ -1497,7 +1498,7 @@ th {
   display: flex; 
   margin: 1rem;
   align-items: center; 
-  background-color: #fff; 
+  background-color:var(--clr-white); 
   border: 1px solid #ddd; 
   border-radius: 8px; 
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
@@ -1551,8 +1552,8 @@ th {
 
 .checkout-button {
   padding: 10px; 
-  background-color: #28a745; 
-  color: white; 
+  background-color:var(--clr-primary-8); 
+  color:var(--clr-black); 
   border: none; 
   border-radius: 5px; 
   font-size: 1.2rem;
@@ -1568,7 +1569,7 @@ th {
 }
 
 .checkout-button:hover:not(:disabled) {
-  background-color: #218838; 
+  background-color:var(--clr-primary-11); 
 }
 
 .buttons-carts {
@@ -2689,3 +2690,148 @@ input[type='checkbox'] {
   }
 }
 
+/* Container for the entire form */
+.form-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Form title */
+.form-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form group */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Label styling */
+.form-group label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+/* Input styling */
+.form-group input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.form-group input[type="email"]:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Submit button */
+.btn {
+ 
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn:disabled {
+  background-color: #bbb;
+  cursor: not-allowed;
+}
+
+.btn:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+/* Container for the reset password form */
+.reset-password-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Form title */
+.reset-password-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form group */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Label styling */
+.form-group label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+/* Input styling */
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.form-group input[type="password"]:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Submit button */
+.update-button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.update-button:disabled {
+  background-color: #bbb;
+  cursor: not-allowed;
+}
+
+.update-button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
+
+/* Loader styling */
+.loading {
+  display: inline-block;
+  margin-top: 10px;
+}

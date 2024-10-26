@@ -1,5 +1,38 @@
 import asyncHandler from '../middleware/asyncHandler.js'
 import Product from '../models/Product.js'
+const getAllProducts = asyncHandler(async (req, res) => {
+  // Search
+  const keyword = req.query.keyword
+    ? { name: { $regex: req.query.keyword, $options: 'i' } }
+    : {}
+
+  // Filters
+  const filters = {
+    ...keyword,
+    ...(req.query.category ? { category: req.query.category } : {}),
+    ...(req.query.rating ? { rating: { $gte: req.query.rating } } : {}),
+    ...(req.query.inStock === 'true' ? { countInStock: { $gt: 0 } } : {}),
+    ...(req.query.inStock === 'false' ? { countInStock: { $eq: 0 } } : {}),
+    ...(req.query.minPrice ? { price: { $gte: req.query.minPrice } } : {}),
+    ...(req.query.maxPrice ? { price: { $lte: req.query.maxPrice } } : {}),
+  }
+
+  // Set sorting options based on query
+  let sortOptions = {}
+  if (req.query.sortBy) {
+    sortOptions =
+      req.query.sortBy === 'priceAsc'
+        ? { price: 1 }
+        : req.query.sortBy === 'priceDesc'
+        ? { price: -1 }
+        : { rating: -1 } // Default sort by rating if no valid sortBy is provided
+  }
+
+  // Fetch all products with sorting
+  const products = await Product.find(filters).sort(sortOptions)
+
+  res.json({ products })
+})
 const getPorducts = asyncHandler(async (req, res) => {
   const pageSize = 4
   const page = Number(req.query.pageNumber) || 1
@@ -233,6 +266,7 @@ const getTopProducts = asyncHandler(async (req, res) => {
   res.status(200).json(products)
 })
 export {
+  getAllProducts,
   getPorducts,
   getPorductsShoes,
   getPorductsClothing,

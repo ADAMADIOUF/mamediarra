@@ -41,6 +41,9 @@ import Tailored from './pages/Tailored';
 import CustomDesign from './pages/CustomDesign';
 import HandCraft from './pages/HandCraft';
 import DashboardScreen from './screen/DashboardScreen';
+import ShopScreen from './screen/ShopScreen';
+import ForgetPasswordScreen from './screen/ForgetPasswordScreen';
+import ResetPasswordScreen from './screen/ResetPasswordScreen';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
@@ -48,7 +51,7 @@ const router = createBrowserRouter(
       <Route path='/search/:keyword' element={<Home />} />
       <Route path='/page/:pageNumber' element={<Home />} />
       <Route path='/product/:id' element={<ProductScreen />} />
-      <Route path='/shop' element={<HomeProducts />} />
+      <Route path='/shop' element={<ShopScreen />} />
       <Route path='/clothing/mens' element={<MenClothing />} />
       <Route path='/clothing/kids' element={<KidsClothing />} />
       <Route path='/clothing/womens' element={<WomenClothing />} />
@@ -66,6 +69,8 @@ const router = createBrowserRouter(
       <Route path='/cart' element={<CartScreen />} />
       <Route path='/login' element={<LoginScreen />} />
       <Route path='/register' element={<RegisterScreen />} />
+      <Route path='/forgot-password' element={<ForgetPasswordScreen />} />
+      <Route path='/reset-password/:token' element={<ResetPasswordScreen />} />
       <Route path='' element={<PrivateRoute />}>
         <Route path='/profile' element={<ProfileScreen />} />
         <Route path='/wishlist' element={<WhislitScreen />} />

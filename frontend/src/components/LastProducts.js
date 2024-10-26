@@ -80,7 +80,7 @@ const LastProducts = () => {
       <div className='lastProducts-slider-gallery-home-projects'>
         <div className='lastProducts-project-slide'>
           {getVisibleProducts().map((product, index) => (
-            <div className={`lastProducts-project`} key={product.id}>
+            <div className={`lastProducts-project`} key={product._id}>
               <Link to={`/product/${product._id}`}>
                 <img
                   src={product.images[0]}

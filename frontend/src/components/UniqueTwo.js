@@ -31,7 +31,7 @@ const menClothingProducts = data.products.filter(
       <div className='unique-container'>
         <div className='unique-products'>
           {menClothingProducts.slice(0, 3).map((product) => (
-            <UniqueProduct key={product.id} product={product} />
+            <UniqueProduct key={product._id} product={product} />
           ))}
         </div>
         <div className='unique-big-img'>

@@ -79,7 +79,7 @@ const OrderScreen = () => {
           {
             amount: {
               value: order.totalPrice.toString(),
-              currency_code: 'CFA', // Ensure this matches your PayPal script currency
+              currency_code: 'CFA', 
             },
           },
         ],
@@ -153,10 +153,10 @@ const OrderScreen = () => {
               </div>
               <div className='item-details'>
                 <Link to={`/product/${item.product}`} className='item-link'>
-                  {item.name}
+                  {item.name.substring(0,45)}
                 </Link>
                 <p className='item-price'>
-                  {item.qty} x {item.price} CFA = {item.qty * item.price} CFA
+                  {item.qty} x ${item.price}  = ${item.qty * item.price} 
                 </p>
               </div>
             </div>
@@ -166,16 +166,16 @@ const OrderScreen = () => {
       <div className='order-summary'>
         <h2 className='info-title'>Order Summary</h2>
         <div className='summary-row'>
-          <span>Items:</span> <span>{order.itemsPrice} CFA</span>
+          <span>Items:</span> <span>${order.itemsPrice}</span>
         </div>
         <div className='summary-row'>
-          <span>Shipping:</span> <span>{order.shippingPrice} CFA</span>
+          <span>Shipping:</span> <span>${order.shippingPrice}</span>
         </div>
         <div className='summary-row'>
-          <span>Tax:</span> <span>{order.taxPrice} CFA</span>
+          <span>Tax:</span> <span> ${order.taxPrice}</span>
         </div>
         <div className='summary-row'>
-          <span>Total:</span> <span>{order.totalPrice} CFA</span>
+          <span>Total:</span> <span>${order.totalPrice}</span>
         </div>
         {order.paymentMethod === 'Cash on Delivery' && !order.isPaid && (
           <div className='payment-section'>

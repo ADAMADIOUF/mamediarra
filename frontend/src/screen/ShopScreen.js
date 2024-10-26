@@ -1,32 +1,38 @@
 import React, { useState } from 'react'
-import { useGetProductsQuery } from '../slices/productApiSlice' 
+import {
+  useGetProductsQuery,
+  useGetAllproductsQuery,
+} from '../slices/productApiSlice'
 import { Link } from 'react-router-dom'
 import { FaTh, FaThList } from 'react-icons/fa'
+import Paginate from '../components/Paginate'
 
-const HomeProducts = () => {
+const ShopScreen = () => {
   const [keyword] = useState('')
   const [sortOption, setSortOption] = useState('')
   const [category, setCategory] = useState('')
   const [inStock, setInStock] = useState('')
   const [minPrice, setMinPrice] = useState(0)
-  const [maxPrice, setMaxPrice] = useState(100) // Set a default max price
+  const [maxPrice, setMaxPrice] = useState(100)
   const [rating, setRating] = useState('')
 
   const [isGrid2Row, setIsGrid2Row] = useState(true)
-  const pageNumber = 1 // Set your page number as needed
+  const pageNumber = 1
+
 
   const {
     data: productsData,
     error,
     isLoading,
-  } = useGetProductsQuery({
+  } = useGetAllproductsQuery({
     keyword,
     pageNumber,
     category,
     sortBy: sortOption,
     minPrice,
     maxPrice,
-    inStock,rating
+    inStock,
+    rating,
   })
 
   const products = productsData?.products || []
@@ -108,28 +114,28 @@ const HomeProducts = () => {
             Category:
             <select onChange={(e) => setCategory(e.target.value)}>
               <option value=''>All Categories</option>
-              <option value='Bag'>Bag</option>
+              
               <option value='Clothing'>Clothing</option>
-              <option value='Men'>Men</option>
-              <option value='Beauty'>Beauty</option>
+              <option value='Shoes'>Shoes</option>
+              <option value='Accesory'>Accesory</option>
               <option value='Home'>Home</option>
             </select>
           </label>
         </article>
         <article>
-  <h4>Filter by Rating</h4>
-  <label>
-    Minimum Rating:
-    <select onChange={(e) => setRating(e.target.value)}>
-      <option value=''>All Ratings</option>
-      <option value='1'>1 Star & Up</option>
-      <option value='2'>2 Stars & Up</option>
-      <option value='3'>3 Stars & Up</option>
-      <option value='4'>4 Stars & Up</option>
-      <option value='5'>5 Stars</option>
-    </select>
-  </label>
-</article>
+          <h4>Filter by Rating</h4>
+          <label>
+            Minimum Rating:
+            <select onChange={(e) => setRating(e.target.value)}>
+              <option value=''>All Ratings</option>
+              <option value='1'>1 Star & Up</option>
+              <option value='2'>2 Stars & Up</option>
+              <option value='3'>3 Stars & Up</option>
+              <option value='4'>4 Stars & Up</option>
+              <option value='5'>5 Stars</option>
+            </select>
+          </label>
+        </article>
 
         <article>
           <h4>Products</h4>
@@ -142,21 +148,26 @@ const HomeProducts = () => {
             {error && <p>Error loading products: {error.message}</p>}
             {products.map((product) => (
               <div key={product._id} className='product-item'>
-               <Link to={`/product/${product._id}`}>
-                <img src={product.images[0]} alt={product.name} />
-               </Link>
-                <h5>{product.name}</h5>
-                <p>Price: ${product.price.toFixed(2)}</p>
+                <Link to={`/product/${product._id}`}>
+                  <img src={product.images[0]} alt={product.name} />
+                </Link>
+                <h5>{product.name.substring(0, 25)}</h5>
+                <p>Price: ${product.price}</p>
                 <p>Rating: {product.rating} Stars</p>
-                <p>{product.description}</p>
+
                 <p>{product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}</p>
               </div>
             ))}
           </div>
         </article>
       </div>
+      <Paginate
+        pages={productsData?.pages || 1} // Provide a default of 1
+        page={productsData?.page || 1} // Provide a default of 1
+        keyword={keyword ? keyword : ''}
+      />
     </div>
   )
 }
 
-export default HomeProducts
+export default ShopScreen

@@ -98,7 +98,7 @@ const addToWishlistHandler = async () => {
     await addToWishlist(productId).unwrap() // Call the mutation to add to wishlist
     toast.success('Product added to wishlist!')
   } catch (error) {
-    toast.error('Failed to add to wishlist. Please try again.')
+    toast.error('Failed to add to wishlist. Please login.')
   }
 }
   if (loading) {
@@ -297,12 +297,12 @@ const addToWishlistHandler = async () => {
           </article>
           <article className='product-screen-context'>
             <div className='info-section'>
-              <h3>{product.name}</h3>
+              <h3>{product.name.substring(0,45)}</h3>
               <Rating
                 value={product.rating}
                 text={`${product.numReviews} reviews`}
               />
-              <p>Price: {product.price} CFA</p>
+              <p>Price: ${product.price} </p>
               <p>Description: {product.description}</p>
             </div>
             <div className='cart-section'>

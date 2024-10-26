@@ -29,7 +29,29 @@ export const productApiSlice = apiSlice.injectEndpoints({
       providesTags: ['Product'],
       keepUnusedDataFor: 5,
     }),
-
+    getAllproducts: builder.query({
+      query: ({
+        keyword,
+        category,
+        sortBy,
+        minPrice,
+        maxPrice,
+        inStock,
+        rating,
+      }) => ({
+        url: `${PRODUCTS_URL}/products`,
+        params: {
+          keyword,
+          category,
+          sortBy,
+          minPrice,
+          maxPrice,
+          inStock,
+          rating,
+        },
+      }),
+      providesTags: ['Product'],
+    }),
     getProductsShoes: builder.query({
       query: () => ({
         url: `${PRODUCTS_URL}/shoes`,
@@ -118,6 +140,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
   }),
 })
 export const {
+  useGetAllproductsQuery,
   useGetProductsQuery,
   useGetProductsShoesQuery,
   useGetProductsClothingQuery,

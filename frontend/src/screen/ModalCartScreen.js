@@ -54,7 +54,7 @@ const ModalCartScreen = ({ closeModal }) => {
                 <Link className='cart-item-name' to={`/product/${item._id}`}>
                   {item.name.substring(0, 20)}
                 </Link>
-                <div className='cart-item-price'>{item.price} CFA</div>
+                <div className='cart-item-price'>${item.price}</div>
                 <select
                   className='cart-item-qty'
                   value={item.qty}

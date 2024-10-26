@@ -17,13 +17,14 @@ const Home = () => {
     <div>
       {!keyword && <Hero />}
       {!keyword && <HeroTwo />}
-      <HomeProduct />
-      <Uniques />
-      <UniqueTwo />
+      {!keyword && <HomeProduct />}
+      {!keyword && <Uniques />}
+
+      {!keyword && <UniqueTwo />}
       {!keyword && <HeroThree />}
-     <LastHomeProduct/>
+      {!keyword && <LastHomeProduct />}
       {!keyword && <Client />}
-      <LastProducts />
+      {keyword && <LastProducts />}
     </div>
   )
 }

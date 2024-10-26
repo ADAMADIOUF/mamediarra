@@ -39,7 +39,7 @@ const CartScreen = () => {
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch()
-  const [qty, setQty] = useState(item.qty) // Use the qty from the item
+  const [qty, setQty] = useState(item.qty) 
 
   const incrementQuantity = () => {
     if (qty < item.countInStock) {
@@ -73,9 +73,9 @@ const CartItem = ({ item }) => {
         </article>
         <article>
           <Link className='shopping-cart-item-name' to={`/product/${item._id}`}>
-            {item.name}
+            {item.name.substring(0,50)}
           </Link>
-          <div className='shopping-cart-item-price'>{item.price} CFA</div>
+          <div className='shopping-cart-item-price'>${item.price}</div>
           <div className='quantity-controls'>
             <h3>Quantity</h3>
             <button className='quantity-button' onClick={decrementQuantity}>
@@ -119,7 +119,7 @@ const CartSummary = ({ cartItems, checkoutHandler }) => {
         Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items
       </h2>
       <div className='shopping-cart-total'>
-        CFA{' '}
+        $
         {cartItems
           .reduce((acc, item) => acc + item.qty * item.price, 0)
           .toFixed(2)}

@@ -4,6 +4,7 @@ import {
   createProductReview,
   deleteProduct,
   deleteProductReview,
+  getAllProducts,
   getPorducts,
   getPorductsAccesory,
   getPorductsAfrican,
@@ -16,6 +17,7 @@ import {
 import { admin, protect } from '../middleware/authMiddleware.js'
 
 const router = express.Router()
+router.route(`/products`).get(getAllProducts)
 router.route(`/shoes`).get(getPorductsShoes)
 router.route(`/clothing`).get(getPorductsClothing)
 router.route(`/accesory`).get(getPorductsAccesory)

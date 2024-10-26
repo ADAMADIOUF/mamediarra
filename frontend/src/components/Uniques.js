@@ -35,7 +35,7 @@ const Uniques = () => {
         </div>
         <div className='unique-products'>
           {womenClothingProducts.slice(0, 3).map((product) => (
-            <UniqueProduct key={product.id} product={product} />
+            <UniqueProduct key={product._id} product={product} />
           ))}
         </div>
       </div>
