@@ -17,14 +17,14 @@ const Home = () => {
     <div>
       {!keyword && <Hero />}
       {!keyword && <HeroTwo />}
-      {!keyword && <HomeProduct />}
+       <HomeProduct />
       {!keyword && <Uniques />}
 
       {!keyword && <UniqueTwo />}
       {!keyword && <HeroThree />}
       {!keyword && <LastHomeProduct />}
       {!keyword && <Client />}
-      {keyword && <LastProducts />}
+       <LastProducts />
     </div>
   )
 }

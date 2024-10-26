@@ -23,7 +23,7 @@ const Uniques = () => {
   }
 const menClothingProducts = data.products.filter(
     (product) =>
-      product.category === 'Clothing' && product.subcategory === 'Men'
+      product.category === 'clothing' && product.subcategory === 'men'
   )
 
   return (

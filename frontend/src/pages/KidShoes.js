@@ -28,7 +28,7 @@ const KidShoes = () => {
   }
 
   const kidsShoesProducts = data.products.filter(
-    (product) => product.category === 'Shoes' && product.subcategory === 'Kids'
+    (product) => product.category === 'shoes' && product.subcategory === 'kids'
   )
 
   return (

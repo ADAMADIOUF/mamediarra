@@ -30,7 +30,7 @@ const CustomDesign = () => {
   // Filter products specifically for Men's Clothing
   const menClothingProducts = data.products.filter(
     (product) =>
-      product.category === 'Africain' && product.subcategory === 'custom'
+      product.category === 'africain' && product.subcategory === 'custom'
   )
 
   return (

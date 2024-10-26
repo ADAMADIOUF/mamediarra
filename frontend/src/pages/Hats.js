@@ -30,7 +30,7 @@ const Hats = () => {
   
   const hatProducts = data.products.filter(
     (product) =>
-      product.category === 'Accesory' && product.subcategory === 'hat'
+      product.category === 'accesory' && product.subcategory === 'hat'
   )
 
   return (

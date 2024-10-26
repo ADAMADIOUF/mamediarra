@@ -30,7 +30,7 @@ const HandCraft = () => {
   // Filter products specifically for Men's Clothing
   const menClothingProducts = data.products.filter(
     (product) =>
-      product.category === 'Africain' && product.subcategory === 'hand'
+      product.category === 'africain' && product.subcategory === 'hand'
   )
 
   return (

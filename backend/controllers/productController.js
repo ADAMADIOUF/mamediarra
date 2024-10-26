@@ -1,12 +1,12 @@
 import asyncHandler from '../middleware/asyncHandler.js'
 import Product from '../models/Product.js'
 const getAllProducts = asyncHandler(async (req, res) => {
-  // Search
+
   const keyword = req.query.keyword
     ? { name: { $regex: req.query.keyword, $options: 'i' } }
     : {}
 
-  // Filters
+ 
   const filters = {
     ...keyword,
     ...(req.query.category ? { category: req.query.category } : {}),
@@ -17,7 +17,7 @@ const getAllProducts = asyncHandler(async (req, res) => {
     ...(req.query.maxPrice ? { price: { $lte: req.query.maxPrice } } : {}),
   }
 
-  // Set sorting options based on query
+
   let sortOptions = {}
   if (req.query.sortBy) {
     sortOptions =
@@ -25,10 +25,10 @@ const getAllProducts = asyncHandler(async (req, res) => {
         ? { price: 1 }
         : req.query.sortBy === 'priceDesc'
         ? { price: -1 }
-        : { rating: -1 } // Default sort by rating if no valid sortBy is provided
+        : { rating: -1 } 
   }
 
-  // Fetch all products with sorting
+
   const products = await Product.find(filters).sort(sortOptions)
 
   res.json({ products })
@@ -37,12 +37,12 @@ const getPorducts = asyncHandler(async (req, res) => {
   const pageSize = 4
   const page = Number(req.query.pageNumber) || 1
 
-  // Search
+
   const keyword = req.query.keyword
     ? { name: { $regex: req.query.keyword, $options: 'i' } }
     : {}
 
-  // Filters
+
   const filters = {
     ...keyword,
     ...(req.query.category ? { category: req.query.category } : {}),
@@ -55,7 +55,7 @@ const getPorducts = asyncHandler(async (req, res) => {
 
   const count = await Product.countDocuments(filters)
 
-  // Set sorting options based on query
+
   let sortOptions = {}
   if (req.query.sortBy) {
     sortOptions =
@@ -63,12 +63,12 @@ const getPorducts = asyncHandler(async (req, res) => {
         ? { price: 1 }
         : req.query.sortBy === 'priceDesc'
         ? { price: -1 }
-        : { rating: -1 } // Default sort by rating if no valid sortBy is provided
+        : { rating: -1 } 
   }
 
-  // Fetch products with pagination and sorting
+ 
   const products = await Product.find(filters)
-    .sort(sortOptions) // Apply sorting here
+    .sort(sortOptions) 
     .limit(pageSize)
     .skip(pageSize * (page - 1))
 
@@ -79,7 +79,7 @@ const getPorducts = asyncHandler(async (req, res) => {
 const getPorductsShoes = asyncHandler(async (req, res) => {
   const { subcategory } = req.query
 
-  let query = { category: 'Shoes' }
+  let query = { category: 'shoes' }
 
   if (subcategory) {
     query.subcategory = subcategory
@@ -92,7 +92,7 @@ const getPorductsShoes = asyncHandler(async (req, res) => {
 const getPorductsClothing = asyncHandler(async (req, res) => {
   const { subcategory } = req.query 
 
-  let query = { category: 'Clothing' }
+  let query = { category: 'clothing' }
 
  
   if (subcategory) {
@@ -106,7 +106,7 @@ const getPorductsClothing = asyncHandler(async (req, res) => {
 const getPorductsAccesory = asyncHandler(async (req, res) => {
   const { subcategory } = req.query
 
-  let query = { category: 'Accesory' }
+  let query = { category: 'accesory' }
 
   if (subcategory) {
     query.subcategory = subcategory
@@ -119,7 +119,7 @@ const getPorductsAccesory = asyncHandler(async (req, res) => {
 const getPorductsAfrican = asyncHandler(async (req, res) => {
   const { subcategory } = req.query
 
-  let query = { category: 'Africain' }
+  let query = { category: 'africain' }
 
   if (subcategory) {
     query.subcategory = subcategory

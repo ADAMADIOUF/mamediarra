@@ -30,7 +30,7 @@ const MenShoes = () => {
   // Filter products specifically for Men's Clothing
   const menShoesProducts = data.products.filter(
     (product) =>
-      product.category === 'Shoes' && product.subcategory === 'Men'
+      product.category === 'shoes' && product.subcategory === 'men'
   )
 
   return (
