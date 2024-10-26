@@ -115,10 +115,10 @@ const ShopScreen = () => {
             <select onChange={(e) => setCategory(e.target.value)}>
               <option value=''>All Categories</option>
               
-              <option value='Clothing'>Clothing</option>
-              <option value='Shoes'>Shoes</option>
-              <option value='Accesory'>Accesory</option>
-              <option value='Home'>Home</option>
+              <option value='clothing'>Clothing</option>
+              <option value='shoes'>Shoes</option>
+              <option value='accesory'>Accesory</option>
+              <option value='african'>custom African</option>
             </select>
           </label>
         </article>
