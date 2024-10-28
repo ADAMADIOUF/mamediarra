@@ -46,13 +46,6 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
         method: 'PUT',
       }),
     }),
-    getTotalOrders: builder.query({
-      // Added total-orders query
-      query: () => ({
-        url: `${ORDERS_URL}/total`,
-      }),
-      keepUnusedDataFor: 5,
-    }),
   }),
 })
 

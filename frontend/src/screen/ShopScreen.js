@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import {
-  useGetProductsQuery,
   useGetAllproductsQuery,
 } from '../slices/productApiSlice'
 import { Link } from 'react-router-dom'

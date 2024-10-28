@@ -113,7 +113,7 @@ const CartItem = ({ item }) => {
 }
 
 const CartSummary = ({ cartItems, checkoutHandler }) => {
-  return (
+  return cartItems.length > 0 ? (
     <div className='shopping-cart-summary'>
       <h2>
         Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items
@@ -132,7 +132,7 @@ const CartSummary = ({ cartItems, checkoutHandler }) => {
         Proceed To Checkout
       </button>
     </div>
-  )
+  ) : null
 }
 
 export default CartScreen

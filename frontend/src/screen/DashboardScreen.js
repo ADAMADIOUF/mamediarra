@@ -1,5 +1,5 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useState } from 'react'
+
 import { Bar } from 'react-chartjs-2'
 import {
   Chart as ChartJS,
@@ -10,31 +10,71 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js'
-
+import { useGetAllproductsQuery } from '../slices/productApiSlice'
+import { useGetOrdersQuery } from '../slices/orderApiSlice'
+import{useGetUsersQuery} from "../slices/userApiSlice"
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 const DashboardScreen = () => {
+  const [inStock, setInStock] = useState('')
 
-  // Get total payments, reviews, and purchased products from Redux store
-  const cart = useSelector((state) => state.cart)
-  const { cartItems } = cart
+  // Fetch products data
+  const {
+    data: productsData,
+    error: productsError,
+    isLoading: productsLoading,
+  } = useGetAllproductsQuery({ inStock })
+  const products = productsData?.products || []
+  const totalProducts = products.length
+  const inStockCount = products.filter(
+    (product) => product.countInStock > 0
+  ).length
 
-  // Calculate total payments and total purchased products
-  const totalPayments = cartItems.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  )
-  const totalPurchasedProducts = cartItems.length
-  const totalReviews = 200 
+  const {
+    data: ordersData,
+    error: ordersError,
+    isLoading: ordersLoading,
+  } = useGetOrdersQuery()
+  const totalOrders = ordersData?.length || 0
+  const totalEarnings = ordersData
+    ? ordersData.reduce((sum, order) => sum + order.totalPrice, 0)
+    : 0
+
+  // Fetch users data
+  const {
+    data: usersData,
+    error: usersError,
+    isLoading: usersLoading,
+    refetch: refetchUsers,
+  } = useGetUsersQuery()
+  const totalUsers = usersData?.length || 0
 
   // Data for the chart
   const data = {
-    labels: ['Total Payments', 'Total Reviews', 'Total Purchases'],
+    labels: [
+      'In-Stock Products',
+      'Total Products',
+      'Total Orders',
+      'Total Earnings',
+      'Total Users',
+    ],
     datasets: [
       {
         label: 'Counts',
-        data: [totalPayments, totalReviews, totalPurchasedProducts],
-        backgroundColor: ['#3b82f6', '#10b981', '#f59e0b'],
+        data: [
+          inStockCount,
+          totalProducts,
+          totalOrders,
+          totalEarnings,
+          totalUsers,
+        ],
+        backgroundColor: [
+          '#3b82f6',
+          '#10b981',
+          '#f59e0b',
+          '#ef4444',
+          '#6366f1',
+        ],
       },
     ],
   }
@@ -47,24 +87,32 @@ const DashboardScreen = () => {
       },
       title: {
         display: true,
-        text: 'User Dashboard Summary',
+        text: 'Inventory and User Dashboard Summary',
       },
     },
   }
 
   return (
     <div>
-      <h2>Welcome to Your User Dashboard</h2>
-      <p>Here’s a summary of your activity:</p>
-      <ul>
-        <li>Total Payment: ${totalPayments.toFixed(2)}</li>
-        <li>Total Reviews: {totalReviews}</li>
-        <li>Total Purchased Products: {totalPurchasedProducts}</li>
-      </ul>
-
-      <div style={{ width: '80%', margin: '0 auto' }}>
-        <Bar data={data} options={options} />
-      </div>
+      <h2>Inventory Management Dashboard</h2>
+      {productsLoading || ordersLoading || usersLoading ? (
+        <p>Loading...</p>
+      ) : productsError || ordersError || usersError ? (
+        <p>Error loading data</p>
+      ) : (
+        <>
+          <ul>
+            <li>In-Stock Products: {inStockCount}</li>
+            <li>Total Products: {totalProducts}</li>
+            <li>Total Orders: {totalOrders}</li>
+            <li>Total Earnings: ${totalEarnings.toFixed(2)}</li>
+            <li>Total Users: {totalUsers}</li>
+          </ul>
+          <div style={{ width: '80%', margin: '0 auto' }}>
+            <Bar data={data} options={options} />
+          </div>
+        </>
+      )}
     </div>
   )
 }
