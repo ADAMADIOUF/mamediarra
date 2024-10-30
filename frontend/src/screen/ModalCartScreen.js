@@ -50,7 +50,7 @@ const ModalCartScreen = ({ closeModal }) => {
                   />
                 </article>
                 <article>
-                  <Link className='cart-item-name' to={`/product/${item._id}`}>
+                  <Link className='cart-item-name' to={`/product/${item._id}`} onClick={closeModal}>
                     {item.name.substring(0, 20)}
                   </Link>
                   <div className='cart-item-price'>${item.price}</div>

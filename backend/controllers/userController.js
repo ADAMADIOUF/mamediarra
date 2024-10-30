@@ -27,6 +27,35 @@ const login = asyncHandler(async (req, res) => {
     throw new Error('User not found')
   }
 })
+const googleAuth = asyncHandler(async (req, res) => {
+  // req.user should already contain the user's info if using Passport
+  const { name, email, googleId } = req.user // Ensure this structure is correct
+
+  let user = await User.findOne({ googleId })
+  if (user) {
+    // User already exists, log them in
+    generateToken(res, user._id)
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+    })
+  } else {
+    // Create a new user
+    const newUser = await User.create({
+      name,
+      email,
+      googleId,
+    })
+    generateToken(res, newUser._id)
+    res.json({
+      _id: newUser._id,
+      name: newUser.name,
+      email: newUser.email,
+    })
+  }
+})
+
 const register = asyncHandler(async (req, res) => {
   const { email, name, password } = req.body
   const userExist = await User.findOne({ email })
@@ -219,6 +248,7 @@ const updatedUser = asyncHandler(async (req, res) => {
 
 export {
   login,
+  googleAuth,
   register,
   logout,
   forgotPassword,

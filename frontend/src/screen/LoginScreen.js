@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { useLoginMutation } from '../slices/userApiSlice'
+import {
+  useLoginMutation,
+  useGoogleLoginMutation,
+} from '../slices/userApiSlice'
 import { setCredentials } from '../slices/authSlice'
 import { toast } from 'react-toastify'
 import Loader from '../components/Loading'
-
-
 const LoginScreen = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -34,7 +35,6 @@ const LoginScreen = () => {
       toast.error(error?.data?.message || error.error)
     }
   }
-
   return (
     <div className='login-screen'>
       <h1>Sign In</h1>
@@ -66,6 +66,7 @@ const LoginScreen = () => {
         </button>
         {isLoading && <Loader />}
       </form>
+
       <div className='links'>
         <Link to='/forgot-password'>Forgot your password?</Link>
         <div className='register-link'>

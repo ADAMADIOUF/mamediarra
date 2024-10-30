@@ -1,41 +1,47 @@
 const products = [
-    {
-    name: 'Puresun custom Swiss dot kids clothes summer puff sleeves toddler girls dress with carrot embroidery',
+  {
+    name: `Little Girl's Plaid 2PCS, Bowknot Short Sleeve Top + High Waist Plaid Skirt Set 2-piece Holiday Summer Outdoor Outfit`,
     images: [
-      'https://s.alicdn.com/@sc04/kf/Hb55e50570abb49c2a2627a18cc1cf07fW.jpg',
-      'https://s.alicdn.com/@sc04/kf/Hd02b2e0cc56e4594846c0ef24e91ed20D.jpg',
+      'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/32261857551430d16078fef3f1fb3ad2.jpg?imageView2/2/w/800/q/70/format/webp',
+      'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/ed33958844471a5cf0239d476ac61fe5.jpg?imageView2/2/w/800/q/70/format/webp',
+      'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/66a78d6cf7bf3b832f2cb5ba3e61e68e.jpg?imageView2/2/w/800/q/70/format/webp',
+      'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/a3612e05aab0c71ac705389454f80af2.jpg?imageView2/2/w/800/q/70/format/webp',
     ],
-    description: `A delightful summer dress with puff sleeves and carrot embroidery, perfect for toddlers.`,
+    description: `Little Girl's Plaid 2PCS, Bowknot Short Sleeve Top + High Waist Plaid Skirt Set 2-piece Holiday Summer Outdoor Outfit.`,
     brand: 'Apple',
     category: 'clothing',
     subcategory: 'kids',
     price: 50,
     countInStock: 10,
-    rating: 4.5,
+    rating: 4.9,
     numReviews: 12,
   },
   {
-    name: 'Puresun high quality kids clothes smocked children clothing set with crab embroidery',
+    name: '2pcs Boys Spider Print Long Sleeve Baseball Jacket & Long Pants Set, Cool & Handsome, Casual Comfortable Versatile Outfits For Spring And Autumn Outdoor Wear, As Gifts',
     images: [
-      'https://s.alicdn.com/@sc04/kf/Hef68c7a78e7848a980bc09621bcf5a20a.jpg',
-      'https://s.alicdn.com/@sc04/kf/H44d0d17894f740a6923ea813eafef553X.jpg',
+      'https://img.kwcdn.com/product/fancy/04fbaa68-16c3-43cd-a665-b7dab5620611.jpg?imageView2/2/w/800/q/70/format/webp',
+      'https://img.kwcdn.com/product/fancy/e9741321-763c-4396-81bb-8797de5f9b14.jpg?imageView2/2/w/800/q/70/format/webp',
+      'https://img.kwcdn.com/product/fancy/810736b4-bc14-4239-89c6-14dd8ba19d7c.jpg?imageView2/2/w/800/q/70/format/webp',
+      'https://img.kwcdn.com/product/fancy/4b6787ed-dfd9-4ea6-8ae5-bd5df21dbdbc.jpg?imageView2/2/w/800/q/70/format/webp',
     ],
-    description: `A charming smocked clothing set featuring playful crab embroidery for kids.`,
+    description: `2pcs Boys Spider Print Long Sleeve Baseball Jacket & Long Pants Set, Cool & Handsome, Casual Comfortable Versatile Outfits For Spring And Autumn Outdoor Wear, As Gifts.`,
     brand: 'Apple',
     category: 'clothing',
     subcategory: 'kids',
-    price: 50,
+    price: 70,
     countInStock: 7,
     rating: 4.0,
     numReviews: 8,
   },
   {
-    name: '2024 Fashion Girls Clothing Sets with Custom Applique',
+    name: 'Preppy Style Girls 2pcs BABY GIRL Print Baseball Jacket + Pleated Skirt Outdoor Set For Party Sports Gift',
     images: [
-      'https://s.alicdn.com/@sc04/kf/H0c40c9557e044d6fa13113746c658acfm.jpg',
-      'https://s.alicdn.com/@sc04/kf/H8c9e2977768341c0a8bcc9d8d1b235d9K.jpg',
+      'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/5d89618a13ea91a3c9065572c174f43c.jpg?imageView2/2/w/800/q/70/format/webp',
+      'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/c20ddb778585d7e8cdfd9a995e5490a2.jpg?imageView2/2/w/800/q/70/format/webp',
+      'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/ecf29c8b8fb67f4aa878435b23ddb1c4.jpg?imageView2/2/w/800/q/70/format/webp',
+      'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/b9bca305a4d3aaeb50e02f590026b54a.jpg?imageView2/2/w/800/q/70/format/webp',
     ],
-    description: `This cotton outfit features a custom "Big Sister" applique for a stylish look.`,
+    description: `Preppy Style Girls 2pcs BABY GIRL Print Baseball Jacket + Pleated Skirt Outdoor Set For Party Sports Gift.`,
     brand: 'Cannon',
     category: 'clothing',
     subcategory: 'kids',
@@ -45,27 +51,31 @@ const products = [
     numReviews: 12,
   },
   {
-    name: 'Cozy Winter Fleece Hoodie for Kids',
+    name: `2 Pieces Boys' Spider Web Print Hooded Outfit Set, Thin Cartoon Hoodie & Pants for Spring Fall, Kids' Clothing Gift Idea`,
     images: [
-      'https://s.alicdn.com/@sc04/kf/H1e1a1a7b8764382bd8d98fbcde75c1ap.jpg',
-      'https://s.alicdn.com/@sc04/kf/Hbcabcc8bc8044d9be80cf2fc8168b77T.jpg',
+      'https://img.kwcdn.com/product/fancy/c679d2e9-f770-408a-a2a4-70603f1d4731.jpg?imageView2/2/w/800/q/70/format/webp',
+      'https://img.kwcdn.com/product/fancy/7d707bac-6c57-4fcf-8731-7167f4b8f230.jpg?imageView2/2/w/800/q/70/format/webp',
+      'https://img.kwcdn.com/product/fancy/5de1de79-41dc-4ee4-9e6b-bcc6d5b7e5c3.jpg?imageView2/2/w/800/q/70/format/webp',
+      'https://img.kwcdn.com/product/fancy/bc6157a7-35d3-4233-95a7-116805f02f74.jpg?imageView2/2/w/800/q/70/format/webp',
     ],
-    description: `Ultra-soft fleece hoodie that provides comfort and warmth during chilly days.`,
+    description: `2 Pieces Boys' Spider Web Print Hooded Outfit Set, Thin Cartoon Hoodie & Pants for Spring Fall, Kids' Clothing Gift Idea.`,
     brand: 'FleeceWorld',
-    category: 'accessory',
-    subcategory: 'bag',
+    category: 'clothing',
+    subcategory: 'kids',
     price: 35,
     countInStock: 12,
     rating: 4.7,
     numReviews: 8,
   },
   {
-    name: 'Supercute Mochila Escolar Infantil Back To School Backpack',
+    name: `2-Piece Men's Casual Outfit - Gradient Color Hoodie with Breathable Comfy Hooded Sweatshirt and Drawstring Pants Set for Relaxed Fit`,
     images: [
-      'https://s.alicdn.com/@sc04/kf/Hde2a7216c06247d89f2609c660d764baV.jpg',
-      'https://s.alicdn.com/@sc04/kf/Hd68033a1cc9f4140888ee97ad397243b7.jpg',
+      'https://img.kwcdn.com/product/fancy/4cb55f6a-7037-4d54-a631-591139f0ae33.jpg?imageView2/2/w/800/q/70/format/webp',
+      'https://img.kwcdn.com/product/fancy/55c616c4-588a-4cd0-8198-148f8511eee4.jpg?imageView2/2/w/800/q/70/format/webp',
+      'https://img.kwcdn.com/product/fancy/6a47ab37-4be7-4072-bb85-c078408be9af.jpg?imageView2/2/w/800/q/70/format/webp',
+      'https://img.kwcdn.com/product/fancy/d2db2fe4-2424-418b-80d9-faff298ebdeb.jpg?imageView2/2/w/800/q/70/format/webp',
     ],
-    description: `Stylish backpack perfect for kids heading back to school.`,
+    description: `2-Piece Men's Casual Outfit - Gradient Color Hoodie with Breathable Comfy Hooded Sweatshirt and Drawstring Pants Set for Relaxed Fit`,
     brand: 'Sony',
     category: 'clothing',
     subcategory: 'men',
@@ -75,12 +85,13 @@ const products = [
     numReviews: 12,
   },
   {
-    name: 'Casual Summer Dress for Women',
+    name: 'Three-Piece Casual Outfit Set - Soft Micro Elastic Polyester Plaid Print Knit Fabric Long Sleeve Open Front Cardigan, Crop Top, and Striped Pants - Perfect for Spring and Fall Seasons',
     images: [
-      'https://s.alicdn.com/@sc04/kf/H8d9c0f0d2f842c1b2b1d897abf9cf97P.jpg',
-      'https://s.alicdn.com/@sc04/kf/Hb11e5ab2e1447b0ba5d9200c9e1eeb8V.jpg',
+      'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/3530ad27b7556a58a2cbf5cb37e59bd8.jpg?imageView2/2/w/800/q/70/format/webp',
+      'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/19014a65407501669b0b0762b3cfd0de.jpg?imageView2/2/w/800/q/70/format/webp',
+      'https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/27bbafff29f43dcebfeb713c5d2ec4dc.jpg?imageView2/2/w/800/q/70/format/webp',
     ],
-    description: `A lightweight and breezy summer dress perfect for beach days or casual outings.`,
+    description: `Three-Piece Casual Outfit Set - Soft Micro Elastic Polyester Plaid Print Knit Fabric Long Sleeve Open Front Cardigan, Crop Top, and Striped Pants - Perfect for Spring and Fall Seasons.`,
     brand: 'SummerStyles',
     category: 'clothing',
     subcategory: 'women',
@@ -90,7 +101,7 @@ const products = [
     numReviews: 10,
   },
   {
-    name: 'Trendy Men\'s Sneakers',
+    name: "Trendy Men's Sneakers",
     images: [
       'https://s.alicdn.com/@sc04/kf/H3a3d3af2a334b8e8650c2585a333bc4W.jpg',
       'https://s.alicdn.com/@sc04/kf/H7f3b0d4c68b479b92c5ae1b7b3a5f4W.jpg',
@@ -105,7 +116,7 @@ const products = [
     numReviews: 25,
   },
   {
-    name: 'Elegant Women\'s Handbag',
+    name: "Elegant Women's Handbag",
     images: [
       'https://s.alicdn.com/@sc04/kf/Hfbe9b44c11843bba8c1e457c56e3e4M.jpg',
       'https://s.alicdn.com/@sc04/kf/H0d10e3991d844d4bd13a84f35e12e2M.jpg',
@@ -185,7 +196,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/Hb55e50570abb49c2a2627a18cc1cf07fW.jpg',
       'https://s.alicdn.com/@sc04/kf/Hd02b2e0cc56e4594846c0ef24e91ed20D.jpg',
     ],
-    description: 'A delightful summer dress with puff sleeves and carrot embroidery, perfect for toddlers.',
+    description:
+      'A delightful summer dress with puff sleeves and carrot embroidery, perfect for toddlers.',
     brand: 'Apple',
     category: 'clothing',
     subcategory: 'kids',
@@ -200,7 +212,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/Hef68c7a78e7848a980bc09621bcf5a20a.jpg',
       'https://s.alicdn.com/@sc04/kf/H44d0d17894f740a6923ea813eafef553X.jpg',
     ],
-    description: 'A charming smocked clothing set featuring playful crab embroidery for kids.',
+    description:
+      'A charming smocked clothing set featuring playful crab embroidery for kids.',
     brand: 'Apple',
     category: 'clothing',
     subcategory: 'kids',
@@ -215,7 +228,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/H0c40c9557e044d6fa13113746c658acfm.jpg',
       'https://s.alicdn.com/@sc04/kf/H8c9e2977768341c0a8bcc9d8d1b235d9K.jpg',
     ],
-    description: 'This cotton outfit features a custom "Big Sister" applique for a stylish look.',
+    description:
+      'This cotton outfit features a custom "Big Sister" applique for a stylish look.',
     brand: 'Cannon',
     category: 'clothing',
     subcategory: 'kids',
@@ -230,7 +244,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/H1e1a1a7b8764382bd8d98fbcde75c1ap.jpg',
       'https://s.alicdn.com/@sc04/kf/Hbcabcc8bc8044d9be80cf2fc8168b77T.jpg',
     ],
-    description: 'Ultra-soft fleece hoodie that provides comfort and warmth during chilly days.',
+    description:
+      'Ultra-soft fleece hoodie that provides comfort and warmth during chilly days.',
     brand: 'FleeceWorld',
     category: 'accessory',
     subcategory: 'bag',
@@ -260,7 +275,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/H8d9c0f0d2f842c1b2b1d897abf9cf97P.jpg',
       'https://s.alicdn.com/@sc04/kf/Hb11e5ab2e1447b0ba5d9200c9e1eeb8V.jpg',
     ],
-    description: 'A lightweight and breezy summer dress perfect for beach days or casual outings.',
+    description:
+      'A lightweight and breezy summer dress perfect for beach days or casual outings.',
     brand: 'SummerStyles',
     category: 'clothing',
     subcategory: 'women',
@@ -270,12 +286,13 @@ const products = [
     numReviews: 10,
   },
   {
-    name: 'Trendy Men\'s Sneakers',
+    name: "Trendy Men's Sneakers",
     images: [
       'https://s.alicdn.com/@sc04/kf/H3a3d3af2a334b8e8650c2585a333bc4W.jpg',
       'https://s.alicdn.com/@sc04/kf/H7f3b0d4c68b479b92c5ae1b7b3a5f4W.jpg',
     ],
-    description: 'Stylish sneakers that provide comfort and support for daily wear.',
+    description:
+      'Stylish sneakers that provide comfort and support for daily wear.',
     brand: 'SneakerCo',
     category: 'shoes',
     subcategory: 'men',
@@ -285,12 +302,13 @@ const products = [
     numReviews: 25,
   },
   {
-    name: 'Elegant Women\'s Handbag',
+    name: "Elegant Women's Handbag",
     images: [
       'https://s.alicdn.com/@sc04/kf/Hfbe9b44c11843bba8c1e457c56e3e4M.jpg',
       'https://s.alicdn.com/@sc04/kf/H0d10e3991d844d4bd13a84f35e12e2M.jpg',
     ],
-    description: 'Chic handbag that complements any outfit, suitable for work or casual outings.',
+    description:
+      'Chic handbag that complements any outfit, suitable for work or casual outings.',
     brand: 'Fashionista',
     category: 'accessory',
     subcategory: 'bags',
@@ -305,7 +323,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/H6c0b4db4e8c14d55ab9cc49d84e0387e.jpg',
       'https://s.alicdn.com/@sc04/kf/H29ff95ed69c24bfaab5b93c94922f737G.jpg',
     ],
-    description: 'A stylish windbreaker designed for outdoor activities and casual wear.',
+    description:
+      'A stylish windbreaker designed for outdoor activities and casual wear.',
     brand: 'OutdoorGear',
     category: 'clothing',
     subcategory: 'men',
@@ -320,7 +339,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/H251034b649e4823c8eb928bc60f9338d1.jpg',
       'https://s.alicdn.com/@sc04/kf/Hf4c10388f18e47d83a7b0dc0dfc29b0D.jpg',
     ],
-    description: 'Keep your kids dry and stylish with this colorful waterproof raincoat.',
+    description:
+      'Keep your kids dry and stylish with this colorful waterproof raincoat.',
     brand: 'RainGear',
     category: 'clothing',
     subcategory: 'kids',
@@ -330,12 +350,13 @@ const products = [
     numReviews: 18,
   },
   {
-    name: 'Elegant Men\'s Watch',
+    name: "Elegant Men's Watch",
     images: [
       'https://s.alicdn.com/@sc04/kf/H756f21dca23449068d0b1a4c7e27a2f4L.jpg',
       'https://s.alicdn.com/@sc04/kf/H94b963ee028548c080f5ca9b1a4e7f54j.jpg',
     ],
-    description: 'A classic men\'s watch that adds sophistication to any outfit.',
+    description:
+      "A classic men's watch that adds sophistication to any outfit.",
     brand: 'WatchCo',
     category: 'accessory',
     subcategory: 'watches',
@@ -350,7 +371,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/H6a8bc4a89ae64a43be35b4c1e2fef874m.jpg',
       'https://s.alicdn.com/@sc04/kf/H261b45f65a3f4a3f96324fa7328a1218D.jpg',
     ],
-    description: 'An elegant maxi dress adorned with floral patterns, perfect for summer gatherings.',
+    description:
+      'An elegant maxi dress adorned with floral patterns, perfect for summer gatherings.',
     brand: 'SummerFashion',
     category: 'clothing',
     subcategory: 'women',
@@ -365,7 +387,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/Hb55e50570abb49c2a2627a18cc1cf07fW.jpg',
       'https://s.alicdn.com/@sc04/kf/Hd02b2e0cc56e4594846c0ef24e91ed20D.jpg',
     ],
-    description: 'A delightful summer dress with puff sleeves and carrot embroidery, perfect for toddlers.',
+    description:
+      'A delightful summer dress with puff sleeves and carrot embroidery, perfect for toddlers.',
     brand: 'Apple',
     category: 'clothing',
     subcategory: 'kids',
@@ -380,7 +403,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/Hef68c7a78e7848a980bc09621bcf5a20a.jpg',
       'https://s.alicdn.com/@sc04/kf/H44d0d17894f740a6923ea813eafef553X.jpg',
     ],
-    description: 'A charming smocked clothing set featuring playful crab embroidery for kids.',
+    description:
+      'A charming smocked clothing set featuring playful crab embroidery for kids.',
     brand: 'Apple',
     category: 'clothing',
     subcategory: 'kids',
@@ -395,7 +419,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/H0c40c9557e044d6fa13113746c658acfm.jpg',
       'https://s.alicdn.com/@sc04/kf/H8c9e2977768341c0a8bcc9d8d1b235d9K.jpg',
     ],
-    description: 'This cotton outfit features a custom "Big Sister" applique for a stylish look.',
+    description:
+      'This cotton outfit features a custom "Big Sister" applique for a stylish look.',
     brand: 'Cannon',
     category: 'clothing',
     subcategory: 'kids',
@@ -410,7 +435,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/H1e1a1a7b8764382bd8d98fbcde75c1ap.jpg',
       'https://s.alicdn.com/@sc04/kf/Hbcabcc8bc8044d9be80cf2fc8168b77T.jpg',
     ],
-    description: 'Ultra-soft fleece hoodie that provides comfort and warmth during chilly days.',
+    description:
+      'Ultra-soft fleece hoodie that provides comfort and warmth during chilly days.',
     brand: 'FleeceWorld',
     category: 'accessory',
     subcategory: 'bag',
@@ -440,7 +466,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/H8d9c0f0d2f842c1b2b1d897abf9cf97P.jpg',
       'https://s.alicdn.com/@sc04/kf/Hb11e5ab2e1447b0ba5d9200c9e1eeb8V.jpg',
     ],
-    description: 'A lightweight and breezy summer dress perfect for beach days or casual outings.',
+    description:
+      'A lightweight and breezy summer dress perfect for beach days or casual outings.',
     brand: 'SummerStyles',
     category: 'clothing',
     subcategory: 'women',
@@ -450,12 +477,13 @@ const products = [
     numReviews: 10,
   },
   {
-    name: 'Trendy Men\'s Sneakers',
+    name: "Trendy Men's Sneakers",
     images: [
       'https://s.alicdn.com/@sc04/kf/H3a3d3af2a334b8e8650c2585a333bc4W.jpg',
       'https://s.alicdn.com/@sc04/kf/H7f3b0d4c68b479b92c5ae1b7b3a5f4W.jpg',
     ],
-    description: 'Stylish sneakers that provide comfort and support for daily wear.',
+    description:
+      'Stylish sneakers that provide comfort and support for daily wear.',
     brand: 'SneakerCo',
     category: 'shoes',
     subcategory: 'men',
@@ -465,12 +493,13 @@ const products = [
     numReviews: 25,
   },
   {
-    name: 'Elegant Women\'s Handbag',
+    name: "Elegant Women's Handbag",
     images: [
       'https://s.alicdn.com/@sc04/kf/Hfbe9b44c11843bba8c1e457c56e3e4M.jpg',
       'https://s.alicdn.com/@sc04/kf/H0d10e3991d844d4bd13a84f35e12e2M.jpg',
     ],
-    description: 'Chic handbag that complements any outfit, suitable for work or casual outings.',
+    description:
+      'Chic handbag that complements any outfit, suitable for work or casual outings.',
     brand: 'Fashionista',
     category: 'accessory',
     subcategory: 'bags',
@@ -485,7 +514,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/H6c0b4db4e8c14d55ab9cc49d84e0387e.jpg',
       'https://s.alicdn.com/@sc04/kf/H29ff95ed69c24bfaab5b93c94922f737G.jpg',
     ],
-    description: 'A stylish windbreaker designed for outdoor activities and casual wear.',
+    description:
+      'A stylish windbreaker designed for outdoor activities and casual wear.',
     brand: 'OutdoorGear',
     category: 'clothing',
     subcategory: 'men',
@@ -500,7 +530,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/H251034b649e4823c8eb928bc60f9338d1.jpg',
       'https://s.alicdn.com/@sc04/kf/Hf4c10388f18e47d83a7b0dc0dfc29b0D.jpg',
     ],
-    description: 'Keep your kids dry and stylish with this colorful waterproof raincoat.',
+    description:
+      'Keep your kids dry and stylish with this colorful waterproof raincoat.',
     brand: 'RainGear',
     category: 'clothing',
     subcategory: 'kids',
@@ -510,12 +541,13 @@ const products = [
     numReviews: 18,
   },
   {
-    name: 'Elegant Men\'s Watch',
+    name: "Elegant Men's Watch",
     images: [
       'https://s.alicdn.com/@sc04/kf/H756f21dca23449068d0b1a4c7e27a2f4L.jpg',
       'https://s.alicdn.com/@sc04/kf/H94b963ee028548c080f5ca9b1a4e7f54j.jpg',
     ],
-    description: 'A classic men\'s watch that adds sophistication to any outfit.',
+    description:
+      "A classic men's watch that adds sophistication to any outfit.",
     brand: 'WatchCo',
     category: 'accessory',
     subcategory: 'watches',
@@ -530,7 +562,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/H6a8bc4a89ae64a43be35b4c1e2fef874m.jpg',
       'https://s.alicdn.com/@sc04/kf/H261b45f65a3f4a3f96324fa7328a1218D.jpg',
     ],
-    description: 'An elegant maxi dress adorned with floral patterns, perfect for summer gatherings.',
+    description:
+      'An elegant maxi dress adorned with floral patterns, perfect for summer gatherings.',
     brand: 'SummerFashion',
     category: 'clothing',
     subcategory: 'women',
@@ -545,7 +578,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/Hb55e50570abb49c2a2627a18cc1cf07fW.jpg',
       'https://s.alicdn.com/@sc04/kf/Hd02b2e0cc56e4594846c0ef24e91ed20D.jpg',
     ],
-    description: 'A delightful summer dress with puff sleeves and carrot embroidery, perfect for toddlers.',
+    description:
+      'A delightful summer dress with puff sleeves and carrot embroidery, perfect for toddlers.',
     brand: 'Apple',
     category: 'clothing',
     subcategory: 'kids',
@@ -560,7 +594,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/Hef68c7a78e7848a980bc09621bcf5a20a.jpg',
       'https://s.alicdn.com/@sc04/kf/H44d0d17894f740a6923ea813eafef553X.jpg',
     ],
-    description: 'A charming smocked clothing set featuring playful crab embroidery for kids.',
+    description:
+      'A charming smocked clothing set featuring playful crab embroidery for kids.',
     brand: 'Apple',
     category: 'clothing',
     subcategory: 'kids',
@@ -575,7 +610,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/H0c40c9557e044d6fa13113746c658acfm.jpg',
       'https://s.alicdn.com/@sc04/kf/H8c9e2977768341c0a8bcc9d8d1b235d9K.jpg',
     ],
-    description: 'This cotton outfit features a custom "Big Sister" applique for a stylish look.',
+    description:
+      'This cotton outfit features a custom "Big Sister" applique for a stylish look.',
     brand: 'Cannon',
     category: 'clothing',
     subcategory: 'kids',
@@ -590,7 +626,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/H1e1a1a7b8764382bd8d98fbcde75c1ap.jpg',
       'https://s.alicdn.com/@sc04/kf/Hbcabcc8bc8044d9be80cf2fc8168b77T.jpg',
     ],
-    description: 'Ultra-soft fleece hoodie that provides comfort and warmth during chilly days.',
+    description:
+      'Ultra-soft fleece hoodie that provides comfort and warmth during chilly days.',
     brand: 'FleeceWorld',
     category: 'accessory',
     subcategory: 'bag',
@@ -620,7 +657,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/H8d9c0f0d2f842c1b2b1d897abf9cf97P.jpg',
       'https://s.alicdn.com/@sc04/kf/Hb11e5ab2e1447b0ba5d9200c9e1eeb8V.jpg',
     ],
-    description: 'A lightweight and breezy summer dress perfect for beach days or casual outings.',
+    description:
+      'A lightweight and breezy summer dress perfect for beach days or casual outings.',
     brand: 'SummerStyles',
     category: 'clothing',
     subcategory: 'women',
@@ -630,12 +668,13 @@ const products = [
     numReviews: 10,
   },
   {
-    name: 'Trendy Men\'s Sneakers',
+    name: "Trendy Men's Sneakers",
     images: [
       'https://s.alicdn.com/@sc04/kf/H3a3d3af2a334b8e8650c2585a333bc4W.jpg',
       'https://s.alicdn.com/@sc04/kf/H7f3b0d4c68b479b92c5ae1b7b3a5f4W.jpg',
     ],
-    description: 'Stylish sneakers that provide comfort and support for daily wear.',
+    description:
+      'Stylish sneakers that provide comfort and support for daily wear.',
     brand: 'SneakerCo',
     category: 'shoes',
     subcategory: 'men',
@@ -645,12 +684,13 @@ const products = [
     numReviews: 25,
   },
   {
-    name: 'Elegant Women\'s Handbag',
+    name: "Elegant Women's Handbag",
     images: [
       'https://s.alicdn.com/@sc04/kf/Hfbe9b44c11843bba8c1e457c56e3e4M.jpg',
       'https://s.alicdn.com/@sc04/kf/H0d10e3991d844d4bd13a84f35e12e2M.jpg',
     ],
-    description: 'Chic handbag that complements any outfit, suitable for work or casual outings.',
+    description:
+      'Chic handbag that complements any outfit, suitable for work or casual outings.',
     brand: 'Fashionista',
     category: 'accessory',
     subcategory: 'bags',
@@ -665,7 +705,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/H6c0b4db4e8c14d55ab9cc49d84e0387e.jpg',
       'https://s.alicdn.com/@sc04/kf/H29ff95ed69c24bfaab5b93c94922f737G.jpg',
     ],
-    description: 'A stylish windbreaker designed for outdoor activities and casual wear.',
+    description:
+      'A stylish windbreaker designed for outdoor activities and casual wear.',
     brand: 'OutdoorGear',
     category: 'clothing',
     subcategory: 'men',
@@ -680,7 +721,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/H251034b649e4823c8eb928bc60f9338d1.jpg',
       'https://s.alicdn.com/@sc04/kf/Hf4c10388f18e47d83a7b0dc0dfc29b0D.jpg',
     ],
-    description: 'Keep your kids dry and stylish with this colorful waterproof raincoat.',
+    description:
+      'Keep your kids dry and stylish with this colorful waterproof raincoat.',
     brand: 'RainGear',
     category: 'clothing',
     subcategory: 'kids',
@@ -690,12 +732,13 @@ const products = [
     numReviews: 18,
   },
   {
-    name: 'Elegant Men\'s Watch',
+    name: "Elegant Men's Watch",
     images: [
       'https://s.alicdn.com/@sc04/kf/H756f21dca23449068d0b1a4c7e27a2f4L.jpg',
       'https://s.alicdn.com/@sc04/kf/H94b963ee028548c080f5ca9b1a4e7f54j.jpg',
     ],
-    description: 'A classic men\'s watch that adds sophistication to any outfit.',
+    description:
+      "A classic men's watch that adds sophistication to any outfit.",
     brand: 'WatchCo',
     category: 'accessory',
     subcategory: 'watches',
@@ -710,7 +753,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/H6a8bc4a89ae64a43be35b4c1e2fef874m.jpg',
       'https://s.alicdn.com/@sc04/kf/H261b45f65a3f4a3f96324fa7328a1218D.jpg',
     ],
-    description: 'An elegant maxi dress adorned with floral patterns, perfect for summer gatherings.',
+    description:
+      'An elegant maxi dress adorned with floral patterns, perfect for summer gatherings.',
     brand: 'SummerFashion',
     category: 'clothing',
     subcategory: 'women',
@@ -740,7 +784,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/H3bc887c4fd944c8aa6b818e97a9b0a5b.jpg',
       'https://s.alicdn.com/@sc04/kf/H2e6c7f1c79b45f59aa90a5c1a2e2a3fZ.jpg',
     ],
-    description: 'Fun and colorful backpack featuring popular cartoon characters, perfect for school.',
+    description:
+      'Fun and colorful backpack featuring popular cartoon characters, perfect for school.',
     brand: 'CharacterPack',
     category: 'clothing',
     subcategory: 'kids',
@@ -755,7 +800,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/H7c9b5d0b62046c4b9e4a9ac43aaf48eK.jpg',
       'https://s.alicdn.com/@sc04/kf/H0f4d2e14e4d4076b86bcda94b203c42h.jpg',
     ],
-    description: 'A timeless denim jacket that adds a trendy touch to any outfit.',
+    description:
+      'A timeless denim jacket that adds a trendy touch to any outfit.',
     brand: 'DenimStyle',
     category: 'clothing',
     subcategory: 'women',
@@ -800,7 +846,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/Hd9346e2bcb74b7481e5e11e3bb89944B.jpg',
       'https://s.alicdn.com/@sc04/kf/Hec55a6bc62c45e79bc2a4560cdaef39Q.jpg',
     ],
-    description: 'Elegant silk scarf that adds a touch of luxury to any outfit.',
+    description:
+      'Elegant silk scarf that adds a touch of luxury to any outfit.',
     brand: 'SilkStyle',
     category: 'accessory',
     subcategory: 'scarves',
@@ -815,7 +862,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/Hc8bc5e6e17840c58c1c9dcb7bb4913dC.jpg',
       'https://s.alicdn.com/@sc04/kf/H7de21b9cb4f4d88b8f39fa8b2de758eY.jpg',
     ],
-    description: 'Protect your child from the sun with this stylish summer hat.',
+    description:
+      'Protect your child from the sun with this stylish summer hat.',
     brand: 'SunSmart',
     category: 'clothing',
     subcategory: 'kids',
@@ -825,12 +873,13 @@ const products = [
     numReviews: 15,
   },
   {
-    name: 'Men\'s Formal Dress Shoes',
+    name: "Men's Formal Dress Shoes",
     images: [
       'https://s.alicdn.com/@sc04/kf/Hc13d9b88b094120b8dfe30f0e2f0c1be.jpg',
       'https://s.alicdn.com/@sc04/kf/H8b5f963c2bc474c92f66e0b3b87f281c.jpg',
     ],
-    description: 'Classic formal dress shoes suitable for office and special occasions.',
+    description:
+      'Classic formal dress shoes suitable for office and special occasions.',
     brand: 'DressStyle',
     category: 'shoes',
     subcategory: 'men',
@@ -840,7 +889,7 @@ const products = [
     numReviews: 20,
   },
   {
-    name: 'Men\'s Casual T-shirt',
+    name: "Men's Casual T-shirt",
     images: [
       'https://s.alicdn.com/@sc04/kf/H46c4a1b2d6c4b88b8f4d7d0b5290d21Y.jpg',
       'https://s.alicdn.com/@sc04/kf/Hfb1f878abda145daaa37f4543eece4fA.jpg',
@@ -875,7 +924,8 @@ const products = [
       'https://s.alicdn.com/@sc04/kf/Hd04715f9fbd4f688e3fc6d0d19c9159Y.jpg',
       'https://s.alicdn.com/@sc04/kf/Hb2be22a7e7e4695bcfd053fc38b2f90T.jpg',
     ],
-    description: 'Trendy sunglasses that add style and protection from the sun.',
+    description:
+      'Trendy sunglasses that add style and protection from the sun.',
     brand: 'SunglassPro',
     category: 'accessory',
     subcategory: 'sunglasses',

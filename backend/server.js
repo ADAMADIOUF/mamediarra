@@ -10,6 +10,7 @@ import uploadRoute from './routes/uploadRoute.js'
 import contactRoute from './routes/contactRoute.js'
 import wishlistRoute from './routes/whislistRoute.js'
 import connectDB from './config/db.js'
+
 dotenv.config()
 connectDB()
 const app = express()
