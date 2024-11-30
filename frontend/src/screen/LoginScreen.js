@@ -80,13 +80,7 @@ const LoginScreen = () => {
         {isLoading && <Loader />}
       </form>
 
-      <button
-        className='google-button'
-        onClick={handleGoogleLogin}
-        disabled={isGoogleLoading}
-      >
-        {isGoogleLoading ? 'Loading...' : 'Sign In with Google'}
-      </button>
+      
 
       <div className='links'>
         <Link to='/forgot-password'>Forgot your password?</Link>
