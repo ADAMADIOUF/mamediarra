@@ -1,9 +1,9 @@
-import express from "express"
+import express from 'express'
 import dotenv from 'dotenv'
 import path from 'path'
 import cookieParser from 'cookie-parser'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
-import productRoute from "./routes/productRoute.js"
+import productRoute from './routes/productRoute.js'
 import userRoute from './routes/userRoute.js'
 import orderRoute from './routes/orderRoute.js'
 import uploadRoute from './routes/uploadRoute.js'
@@ -44,4 +44,3 @@ app.use(notFound)
 app.use(errorHandler)
 
 app.listen(port, () => console.log(`The server running at port ${port}`))
- 

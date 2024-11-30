@@ -1,4 +1,4 @@
-import { USERS_URL } from '../constants'
+import { USERS_LOGIN_GOOGLE, USERS_URL } from '../constants'
 import { apiSlice } from './apiSlice'
 
 export const usersApiSlice = apiSlice.injectEndpoints({
@@ -10,7 +10,12 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
-    
+    googleLogin: builder.mutation({
+      query: () => ({
+        url: `${USERS_LOGIN_GOOGLE}/google`, // Make sure USERS_LOGIN_GOOGLE points to '/api/users/google'
+        method: 'GET',
+      }),
+    }),
     register: builder.mutation({
       query: (data) => ({
         url: `${USERS_URL}`,
@@ -77,6 +82,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useLoginMutation,
+  useGoogleLoginMutation,
   useLogoutMutation,
   useRegisterMutation,
   useForgotPasswordMutation,

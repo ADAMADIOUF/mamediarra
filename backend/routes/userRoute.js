@@ -20,7 +20,7 @@ router.route('/').post(register).get(protect, admin, getUsers)
 
 router.post('/logout', logout)
 router.post('/login', login)
-router.post('/forgot-password', forgotPassword) 
+router.post('/forgot-password', forgotPassword)
 router.put('/reset-password/:token', resetPassword)
 router
   .route('/profile')

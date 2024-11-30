@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import navLinks from '../dataNav'
-import {
-  FaUser,
-  FaBars,
-  FaTimes,
-
-  FaHeart,
-} from 'react-icons/fa'
+import { FaUser, FaBars, FaTimes, FaHeart } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import CartButton from './CartButton'
 import { clearCartItems } from '../slices/cartSlice'

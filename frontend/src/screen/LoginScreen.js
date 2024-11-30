@@ -8,12 +8,14 @@ import {
 import { setCredentials } from '../slices/authSlice'
 import { toast } from 'react-toastify'
 import Loader from '../components/Loading'
+
 const LoginScreen = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const [login, { isLoading }] = useLoginMutation()
+  const [googleLogin, { isLoading: isGoogleLoading }] = useGoogleLoginMutation()
   const { userInfo } = useSelector((state) => state.auth)
   const { search } = useLocation()
   const sp = new URLSearchParams(search)
@@ -35,6 +37,17 @@ const LoginScreen = () => {
       toast.error(error?.data?.message || error.error)
     }
   }
+
+  const handleGoogleLogin = async () => {
+    try {
+      const res = await googleLogin().unwrap()
+      dispatch(setCredentials({ ...res }))
+      navigate(redirect)
+    } catch (error) {
+      toast.error(error?.data?.message || error.error)
+    }
+  }
+
   return (
     <div className='login-screen'>
       <h1>Sign In</h1>
@@ -66,6 +79,14 @@ const LoginScreen = () => {
         </button>
         {isLoading && <Loader />}
       </form>
+
+      <button
+        className='google-button'
+        onClick={handleGoogleLogin}
+        disabled={isGoogleLoading}
+      >
+        {isGoogleLoading ? 'Loading...' : 'Sign In with Google'}
+      </button>
 
       <div className='links'>
         <Link to='/forgot-password'>Forgot your password?</Link>

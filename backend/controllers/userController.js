@@ -2,7 +2,10 @@ import User from '../models/User.js'
 import asyncHandler from '../middleware/asyncHandler.js'
 import generateToken from '../utils/generateToken.js'
 import crypto from 'crypto'
-import { sendPasswordResetEmail, sendResetSuccessEmail } from '../mailtrap/mailtrap.js'
+import {
+  sendPasswordResetEmail,
+  sendResetSuccessEmail,
+} from '../mailtrap/mailtrap.js'
 const generateNumericCode = (length) => {
   let code = ''
   for (let i = 0; i < length; i++) {
@@ -63,8 +66,8 @@ const register = asyncHandler(async (req, res) => {
     res.status(400)
     throw new Error('User already exits')
   }
-   
-  const verificationCode = generateNumericCode(6) 
+
+  const verificationCode = generateNumericCode(6)
   const user = await User.create({
     name,
     email,
